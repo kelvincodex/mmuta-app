@@ -9,11 +9,13 @@ import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
 export const StartupScreen = () => {
     const navigation = useNavigation()
     useEffect(()=>{
+        if (!navigation.isFocused()){
+            return;
+        }
         const timeout = setTimeout(()=>{
             RouteHelperUtil.navigate(navigation, RouterConstantUtil.onboarding.language)
         }, 3000)
 
-        console.log('ki')
         return ()=> clearTimeout(timeout)
     }, [])
   return (

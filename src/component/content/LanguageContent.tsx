@@ -2,7 +2,7 @@ import {Text, View} from "react-native";
 import {indexStyle} from "@/assets/style/Index";
 import {BaseButton} from "@/component/button/BaseButton";
 import {LanguageData} from "@/toolkit/data/LanguageData";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import {RouteHelperUtil} from "@/util/helper/RouteHelperUtil";
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
@@ -34,6 +34,7 @@ export const LanguageContent = () => {
         setSelected(value)
     }
 
+
   return (
       <View style={indexStyle.language_sub_container}>
           <Text style={[indexStyle.language_text, {marginTop: languageData !== LanguageData[0] ? 100 : 0}]}>{languageData.title}</Text>
@@ -43,8 +44,8 @@ export const LanguageContent = () => {
                           <BaseButton
                               key={index + 1}
                               onPress={() =>handleSelected(value)}
-                              textStyle={[{fontSize: languageData == LanguageData[2] ? 18 : 20 },
-                                  {color: selected == value ? ThemeConstantUtil.COLOR.white : ThemeConstantUtil.COLOR.secondary["100"] }]}
+                              type={selected == value ? 'base' : 'border'}
+                              textStyle={[{fontSize: languageData == LanguageData[2] ? 18 : 20 },]}
                               title={value}
                               containerStyle={[{backgroundColor: selected == value ? ThemeConstantUtil.COLOR.secondary["100"] : ThemeConstantUtil.COLOR.white, marginVertical: 6}]}
                           />

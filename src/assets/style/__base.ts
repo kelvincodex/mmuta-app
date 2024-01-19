@@ -16,5 +16,43 @@ export const baseStyle = StyleSheet.create({
         fontSize: 20,
         lineHeight: 24,
         color: ThemeConstantUtil.COLOR.secondary["100"]
+    },
+    inputContainer:{
+        borderWidth: 2,
+        width: 312,
+        height: 62,
+        borderRadius: 10,
+        borderColor: ThemeConstantUtil.COLOR.neutral["25"],
+        marginTop: 6,
+        flexDirection: "row",
+        justifyContent:"space-between"
+    },
+    textInputContainer:{
+        width: 'auto',
+        height: 'auto',
+    },
+    input:{
+        flex: .7,
+        paddingLeft: 15,
+    },
+
+    eyeIconContainer:{
+        flex: .15
+
+    },
+
+    iconContainer:{
+        flex: .15,
+        borderRightWidth: 1,
+        borderRightColor: ThemeConstantUtil.COLOR.neutral["25"],
+        justifyContent:'center',
+        alignItems:'center',
+
+    },
+    textInputLabel:{
+        fontFamily: ThemeConstantUtil.FONT_FAMILY.montserratAltRegular,
+        color: ThemeConstantUtil.COLOR.neutral["50"],
+        fontSize: 13,
+        lineHeight: 15
     }
 })

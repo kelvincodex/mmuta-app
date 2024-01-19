@@ -1,6 +1,6 @@
-import {StyleSheet} from "react-native";
+import {Dimensions, StyleSheet, useWindowDimensions} from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
-
+const {height, width} =Dimensions.get("window")
 export const indexStyle = StyleSheet.create({
     flex: {
         flex: 1
@@ -10,12 +10,12 @@ export const indexStyle = StyleSheet.create({
         alignItems:"center",
     },
     bottom:{
-        justifyContent:"center",
-        alignItems:"flex-end",
+        justifyContent:"flex-end",
+        alignItems:"center",
     },
     top:{
-        justifyContent:"center",
-        alignItems:"flex-end",
+        justifyContent:"flex-start",
+        alignItems:"center",
     },
     baseContainer: {
         flex: 1,
@@ -39,11 +39,46 @@ export const indexStyle = StyleSheet.create({
         marginBottom: 40,
         textAlign: 'center'
     },
-
     language_sub_container:{
-        // borderWidth: 2,
         flex: 0.7,
         width: "100%",
         alignItems:"center"
+    },
+    feature_curve:{
+        height: "100%",
+        width: width
+
+    },
+    feature_image:{
+        ...StyleSheet.absoluteFillObject,
+        height: "81%",
+        width: "100%",
+        alignSelf:"center",
+        opacity: 0.5,
+        borderBottomLeftRadius: 200,
+        borderBottomRightRadius: 150,
+        transform: [{rotate: '13deg'}, {scaleX: 1.5}]
+    },
+    skip:{
+        fontFamily: ThemeConstantUtil.FONT_FAMILY.glory,
+        color: ThemeConstantUtil.COLOR.white,
+        fontSize: 20,
+        lineHeight: 22
+    },
+    justifyBetween:{
+        flexDirection:"row",
+        justifyContent:"space-between",
+        alignItems:"center"
+    },
+    justifyCenter:{
+        flexDirection:"row",
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    dot: {
+        width: 14,
+        height: 14,
+        borderRadius: 50,
+        backgroundColor: ThemeConstantUtil.COLOR.neutral["25"]
     }
 })

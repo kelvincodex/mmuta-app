@@ -1,8 +1,8 @@
 import {routes} from "@/router/route/index-route";
 import {NavigatorTypeConstantUtil} from "@/util/constant/NavigatorTypeConstantUtil";
-import {DrawerNavigationLayout} from "@/view/layout/DrawerNavigationLayout";
-import {BottomTabNavigationLayout} from "@/view/layout/BottomTabNavigationLayout";
-import {StackNavigationLayout} from "@/view/layout/StackNavigationLayout";
+import {DrawerNavigationLayout} from "@/view/layout/route/DrawerNavigationLayout";
+import {BottomTabNavigationLayout} from "@/view/layout/route/BottomTabNavigationLayout";
+import {StackNavigationLayout} from "@/view/layout/route/StackNavigationLayout";
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
 
 export const RenderNavigation = () => {

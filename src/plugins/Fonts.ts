@@ -4,6 +4,7 @@ export const Fonts = {
     joseFinSans: require('@/assets/font/JosefinSans-SemiBold.ttf'),
     montserratBold: require('@/assets/font/Montserrat-Bold.ttf'),
     montserratAltBold: require('@/assets/font/MontserratAlternates-Bold.ttf'),
+    montserratAltRegular: require('@/assets/font/MontserratAlternates-Regular.ttf'),
     montserratMedium: require('@/assets/font/Montserrat-Medium.ttf'),
     montserratRegular: require('@/assets/font/Montserrat-Regular.ttf'),
 }

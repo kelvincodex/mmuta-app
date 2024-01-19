@@ -4,26 +4,18 @@ import {NavigatorTypeConstantUtil} from "@/util/constant/NavigatorTypeConstantUt
 import {LanguageScreen} from "@/view/screen/onboarding/LanguageScreen";
 import {GetStartedScreen} from "@/view/screen/onboarding/GetStartedScreen";
 import {FeatureScreen} from "@/view/screen/onboarding/FeatureScreen";
+import {SignupScreen} from "@/view/screen/auth/SignupScreen";
+import {SignInScreen} from "@/view/screen/auth/SignInScreen";
 
-export const onboardingRoute = [
+export const authRoute = [
     {
-        name: RouterConstantUtil.onboarding.startup,
-        component: StartupScreen,
+        name: RouterConstantUtil.auth.signup,
+        component: SignupScreen,
         options: {type: NavigatorTypeConstantUtil.Stack}
     },
     {
-        name: RouterConstantUtil.onboarding.language,
-        component: LanguageScreen,
-        options: {type: NavigatorTypeConstantUtil.Stack}
-    },
-    {
-        name: RouterConstantUtil.onboarding.getStarted,
-        component: GetStartedScreen,
-        options: {type: NavigatorTypeConstantUtil.Stack}
-    },
-    {
-        name: RouterConstantUtil.onboarding.feature,
-        component: FeatureScreen,
+        name: RouterConstantUtil.auth.signIn,
+        component: SignInScreen,
         options: {type: NavigatorTypeConstantUtil.Stack}
     },
 ]

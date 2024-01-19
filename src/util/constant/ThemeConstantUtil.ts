@@ -36,6 +36,7 @@ export const ThemeConstantUtil = {
         montserratAltBold: "montserratAltBold",
         montserratMedium: "montserratMedium",
         montserratRegular: "montserratRegular",
+        montserratAltRegular: "montserratAltRegular",
     }
 }
 
