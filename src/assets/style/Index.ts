@@ -80,5 +80,13 @@ export const indexStyle = StyleSheet.create({
         height: 14,
         borderRadius: 50,
         backgroundColor: ThemeConstantUtil.COLOR.neutral["25"]
-    }
+    },
+    homeTitle: {
+        color: ThemeConstantUtil.COLOR.neutral["75"],
+        fontFamily: ThemeConstantUtil.FONT_FAMILY.montserratMedium,
+        fontSize: 16,
+        lineHeight: 19,
+        marginBottom: 10
+    },
+
 })

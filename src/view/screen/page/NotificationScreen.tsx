@@ -8,14 +8,16 @@ import {SearchInput} from "@/component/input/SearchInput";
 import {HomeFeaturedContainer} from "@/component/container/HomeFeaturedContainer";
 import {HomeLearningContainer} from "@/component/container/HomeLearningContainer";
 import {HomeContent} from "@/component/content/HomeContent";
+import {TabHeaderContainer} from "@/component/container/TabHeaderContainer";
+import {NotificationContent} from "@/component/content/NotificationContent";
 
-export const HomeScreen = () => {
+export const NotificationScreen = () => {
     const {setOptions} = useNavigation()
 
     useLayoutEffect(() => {
         setOptions({
             headerShown: true,
-            header: () =>  <HomeHeaderContainer />
+            header: () =>  <TabHeaderContainer title={'Notifications'} />
 
         })
     }, []);
@@ -24,7 +26,7 @@ export const HomeScreen = () => {
           <ScrollView
               contentContainerStyle={{paddingHorizontal: 30}}
           >
-              <HomeContent />
+              <NotificationContent />
           </ScrollView>
           <Image source={require('@/assets/image/shadow.png')} resizeMode={'cover'} style={{width: '100%', height: 22}} />
       </View>

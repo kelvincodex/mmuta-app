@@ -21,9 +21,9 @@ export const CustomDrawerLayout = ({...props}: CustomDrawerLayoutProps & DrawerC
           >
               <View style={styles.top}>
                   <View style={styles.profile}>
-                      <ImageAvatar  src={require('@/assets/image/pic.jpg')} />
+                      <ImageAvatar containerStyle={{borderColor: ThemeConstantUtil.COLOR.primary["100"], backgroundColor: ThemeConstantUtil.COLOR.neutral["25"], borderWidth: 2}}  src={require('@/assets/image/pic.jpg')} />
 
-                      <View style={{borderWidth: 1}}>
+                      <View style={{}}>
                           <Text style={{fontFamily: ThemeConstantUtil.FONT_FAMILY.montserratMedium, fontSize: 17, lineHeight: 20, color: ThemeConstantUtil.COLOR.neutral["100"]}}>John D.</Text>
                           <Text style={{fontFamily: ThemeConstantUtil.FONT_FAMILY.montserratMedium, fontSize: 14, lineHeight: 20, color: ThemeConstantUtil.COLOR.neutral["50"]}}>JS 2</Text>
                           <VerifiedBatch  style={[{transform: [{translateY: -40}, {translateX: 70}]}, {zIndex: 999}]} />

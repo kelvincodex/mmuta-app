@@ -1,12 +1,13 @@
-import {Image, View} from "react-native";
+import {Image, StyleProp, View, ViewStyle} from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 
 interface ImageAvatarProps {
-    src?: number
+    src?: number,
+    containerStyle?: StyleProp<ViewStyle>
 }
-export const ImageAvatar = ({src}: ImageAvatarProps) => {
+export const ImageAvatar = ({src, containerStyle}: ImageAvatarProps) => {
   return(
-      <View style={{width: 50, height: 50, borderWidth: 2, borderRadius: 50, overflow: 'hidden', borderColor: ThemeConstantUtil.COLOR.primary["100"], backgroundColor: ThemeConstantUtil.COLOR.neutral["25"]}}>
+      <View style={[{width: 50, height: 50, borderRadius: 50, overflow: 'hidden' }, containerStyle]}>
         <Image source={src ? src : require('@/assets/image/no-mage.png')} resizeMode={'cover'} style={{width:"100%", height: "100%"}} />
       </View>
   )
