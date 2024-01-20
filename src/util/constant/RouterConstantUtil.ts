@@ -8,5 +8,8 @@ export const RouterConstantUtil ={
     auth: {
         signup: "Sign up screen",
         signIn: "Sign In screen",
+    },
+    page:{
+        home: "Home screen"
     }
 }

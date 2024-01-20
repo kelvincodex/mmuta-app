@@ -34,6 +34,10 @@ export const baseStyle = StyleSheet.create({
     input:{
         flex: .7,
         paddingLeft: 15,
+        fontSize: 15,
+        fontFamily: ThemeConstantUtil.FONT_FAMILY.montserratAltRegular,
+        lineHeight: 18,
+        color: ThemeConstantUtil.COLOR.neutral["75"]
     },
 
     eyeIconContainer:{

@@ -9,10 +9,14 @@ import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import {RouteHelperUtil} from "@/util/helper/RouteHelperUtil";
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
 import {useNavigation} from "@react-navigation/native";
-export const SignupFormik = () => {
+export const SignInFormik = () => {
     const navigation = useNavigation()
-    function navigateToSignIn() {
-        RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.signIn)
+    function navigateToSignUp() {
+        RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.signup)
+    }
+
+    function navigateToHome() {
+        RouteHelperUtil.navigate(navigation, RouterConstantUtil.page.home)
     }
     const formik = useFormik({
          initialValues:{},
@@ -23,13 +27,11 @@ export const SignupFormik = () => {
           <BaseInput label={'Phone Number'} Icon={BaseTelephone} placeholder={'Enter your phone number'} />
           <BaseInput label={'Password'} Icon={BasePadlock} placeholder={'Enter your password'} />
 
-          <View style={{width: 280, flexDirection: 'row', gap: 10, alignItems:"flex-start", alignSelf:"flex-start"}}>
-              <Checkbox style={styles.checkbox} />
-              <Text style={styles.text}>By signing up, you agree to our  <Text style={styles.activeText}>Terms and Conditions</Text></Text>
-          </View>
-          <BaseButton containerStyle={{width: 314, height: 62}} type={'base'} title={'Sign up'} />
+         <Text style={styles.activeText}>Forgot password?</Text>
 
-          <Text style={styles.question}>Have an account already? <Text onPress={navigateToSignIn} style={styles.activeQuestion}>Sign In</Text></Text>
+          <BaseButton onPress={navigateToHome} containerStyle={{width: 314, height: 62}} type={'base'} title={'Sign In'} />
+
+          <Text style={styles.question}>Don’t have an account? <Text onPress={navigateToSignUp} style={styles.activeQuestion}>Sign Up</Text></Text>
       </View>
   )
 }
@@ -48,14 +50,16 @@ const styles = StyleSheet.create({
         color: ThemeConstantUtil.COLOR.neutral["75"]
     },
     activeText:{
-        color: ThemeConstantUtil.COLOR.primary["75"]
+        color: ThemeConstantUtil.COLOR.primary["75"],
+        alignSelf:"flex-end",
+        transform: [{translateY: -15}]
     },
     question:{
         color: ThemeConstantUtil.COLOR.neutral["75"],
         fontSize: 16,
         lineHeight: 21,
         fontFamily: ThemeConstantUtil.FONT_FAMILY.montserratMedium,
-        transform: [{translateY: 60}],
+        transform: [{translateY: 70}],
         zIndex: -999
 
     },

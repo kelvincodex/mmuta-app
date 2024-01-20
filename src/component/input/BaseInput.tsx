@@ -1,4 +1,4 @@
-import {Text, TextInput, View} from "react-native";
+import {StyleSheet, Text, TextInput, TextInputProps, View} from "react-native";
 import {baseStyle} from "@/assets/style/__base";
 import React from "react";
 import {SvgProps} from "react-native-svg";
@@ -8,7 +8,7 @@ interface BaseInputProps {
     label?: string,
     Icon?: React.FC<SvgProps>,
 }
-export const BaseInput = ({label, Icon}: BaseInputProps) => {
+export const BaseInput = ({label, Icon, ...props}: BaseInputProps & TextInputProps) => {
   return(
       <View style={baseStyle.textInputContainer}>
           <Text style={baseStyle.textInputLabel}>{label}</Text>
@@ -21,6 +21,8 @@ export const BaseInput = ({label, Icon}: BaseInputProps) => {
               <TextInput
                   style={baseStyle.input}
                   cursorColor={ThemeConstantUtil.COLOR.neutral["25"]}
+                  placeholderTextColor={ThemeConstantUtil.COLOR.neutral["25"]}
+                  {...props}
               />
               <View style={baseStyle.eyeIconContainer}></View>
           </View>
@@ -28,3 +30,9 @@ export const BaseInput = ({label, Icon}: BaseInputProps) => {
       </View>
   )
 }
+
+const styles = StyleSheet.create({
+    placeholder:{
+
+    }
+})
