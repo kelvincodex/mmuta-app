@@ -13,6 +13,8 @@ import {SubjectData} from "@/toolkit/data/SubjectData";
 import {SubjectCard} from "@/component/card/SubjectCard";
 import {DownloadLessonCard} from "@/component/card/DownloadLessonCard";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
+import {FloatIcon} from "@/component/util/FloatIcon";
+import Sound from "@/assets/icon/base-sound-loud.svg";
 
 export const SavedScreen = () => {
     const {setOptions} = useNavigation()
@@ -26,6 +28,8 @@ export const SavedScreen = () => {
     }, []);
   return(
       <View style={{flex: 1, paddingTop: 20}}>
+          <FloatIcon Icon={Sound} containerStyle={{bottom: 20, right: 30}} />
+
           <ScrollView
               contentContainerStyle={{paddingHorizontal: 30}}
           >

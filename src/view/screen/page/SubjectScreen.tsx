@@ -5,6 +5,8 @@ import {Image, ScrollView, View} from "react-native";
 import {SearchInput} from "@/component/input/SearchInput";
 import {SubjectData} from "@/toolkit/data/SubjectData";
 import {SubjectCard} from "@/component/card/SubjectCard";
+import {FloatIcon} from "@/component/util/FloatIcon";
+import Sound from "@/assets/icon/base-sound-loud.svg";
 
 export const SubjectScreen = () => {
   const {setOptions} = useNavigation()
@@ -17,7 +19,9 @@ export const SubjectScreen = () => {
 
   return(
       <View style={{flex: 1, paddingTop: 20}}>
-        <ScrollView
+          <FloatIcon Icon={Sound} containerStyle={{bottom: 20, right: 30}} />
+
+          <ScrollView
           contentContainerStyle={{paddingHorizontal: 20}}
         >
           <SearchInput />
