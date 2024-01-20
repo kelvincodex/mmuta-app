@@ -4,6 +4,7 @@ import {DrawerNavigationLayout} from "@/view/layout/route/DrawerNavigationLayout
 import {BottomTabNavigationLayout} from "@/view/layout/route/BottomTabNavigationLayout";
 import {StackNavigationLayout} from "@/view/layout/route/StackNavigationLayout";
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
+import Home from "@/assets/icon/home.svg";
 
 export const RenderNavigation = () => {
   const StackRoutes = routes.filter((value)=> value.options.type == NavigatorTypeConstantUtil.Stack)
@@ -20,11 +21,12 @@ export const RenderNavigation = () => {
     {
       name: NavigatorTypeConstantUtil.BottomTab,
       component: RenderBottomTab,
+      options: {title: 'Home', icon: Home}
     }
   ]
 
   function RenderDrawer() {
-    return <DrawerNavigationLayout initialRouteName={""} screens={DrawerRoutes.concat(BottomTabRoute)} />
+    return <DrawerNavigationLayout initialRouteName={NavigatorTypeConstantUtil.BottomTab} screens={DrawerRoutes.concat(BottomTabRoute)} />
   }
 
   const DrawerRoute = [

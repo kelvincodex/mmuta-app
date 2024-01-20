@@ -16,7 +16,7 @@ export const SignInFormik = () => {
     }
 
     function navigateToHome() {
-        RouteHelperUtil.navigate(navigation, RouterConstantUtil.page.home)
+        RouteHelperUtil.navigate(navigation, RouterConstantUtil.tab.home)
     }
     const formik = useFormik({
          initialValues:{},

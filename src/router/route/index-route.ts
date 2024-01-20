@@ -1,8 +1,9 @@
 import {onboardingRoute} from "@/router/route/onboarding-route";
 import {authRoute} from "@/router/route/auth-route";
-import {pageRoute} from "@/router/route/page-route";
+import {tabRoute} from "@/router/route/tab-route";
+import {drawerRoute} from "@/router/route/drawer-route";
 
 const initRoute: any[] = []
 
 
-export const routes = initRoute.concat(onboardingRoute, authRoute, pageRoute)
+export const routes = initRoute.concat(onboardingRoute, authRoute, tabRoute, drawerRoute)

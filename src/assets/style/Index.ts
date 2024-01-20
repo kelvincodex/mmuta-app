@@ -19,7 +19,7 @@ export const indexStyle = StyleSheet.create({
     },
     baseContainer: {
         flex: 1,
-        backgroundColor: "hsla(0, 0%, 100%, 1)"
+        backgroundColor: ThemeConstantUtil.COLOR.white
     },
     language_curveTop:{
         flex: 0.3,

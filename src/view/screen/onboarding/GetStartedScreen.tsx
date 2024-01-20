@@ -13,7 +13,7 @@ export const GetStartedScreen = () => {
         RouteHelperUtil.navigate(navigation, RouterConstantUtil.onboarding.feature)
     }
     function signIn() {
-        RouteHelperUtil.navigate(navigation, RouterConstantUtil.onboarding.feature)
+        RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.signIn)
     }
   return (
       <ImageBackground style={[indexStyle.flex, indexStyle.bottom]} source={require('@/assets/image/getStarted.png')} resizeMethod={'scale'} resizeMode={'cover'}>
