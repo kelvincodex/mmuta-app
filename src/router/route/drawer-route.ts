@@ -13,6 +13,7 @@ import ContactUs from "@/assets/icon/contactUs.svg"
 import Settings from "@/assets/icon/settings.svg"
 import RateUs from "@/assets/icon/rate-us.svg"
 import LearnToEarn from "@/assets/icon/learnToEarn.svg"
+import {ProfileScreen} from "@/view/screen/page/ProfileScreen";
 
 
 
@@ -74,7 +75,7 @@ export const drawerRoute = [
     },
     {
         name: RouterConstantUtil.drawer.profile,
-        component: HomeScreen,
+        component: ProfileScreen,
         options: {type: NavigatorTypeConstantUtil.Drawer, title: 'My Profile', icon: Profile}
     },
 ]

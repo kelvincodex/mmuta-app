@@ -15,6 +15,7 @@
     "build list": "eas build:list",
     "build all": "eas build --platform all",
     "build android": "eas build --platform android",
+    "build android apk": "eas build --platform android --profile preview ",
     "build ios": "eas build --platform ios"
   },
   "dependencies": {
