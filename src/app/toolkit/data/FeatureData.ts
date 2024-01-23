@@ -1,4 +1,4 @@
-import {FeatureDataProps} from "@/types/toolkit-type";
+import {FeatureDataProps} from "@/app/types/toolkit-type";
 
 export const FeatureData: FeatureDataProps[] =[
     {

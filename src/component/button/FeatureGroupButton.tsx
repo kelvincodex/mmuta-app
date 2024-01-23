@@ -1,9 +1,9 @@
 import {FlatList, StyleSheet, View} from "react-native";
 import {BaseButton} from "@/component/button/BaseButton";
 import Animated, {SharedValue, useAnimatedStyle} from "react-native-reanimated";
-import {FeatureData} from "@/toolkit/data/FeatureData";
+import {FeatureData} from "@/app/toolkit/data/FeatureData";
 import {RefObject} from "react";
-import {FeatureDataProps} from "@/types/toolkit-type";
+import {FeatureDataProps} from "@/app/types/toolkit-type";
 import {RouteHelperUtil} from "@/util/helper/RouteHelperUtil";
 import {useNavigation} from "@react-navigation/native";
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";

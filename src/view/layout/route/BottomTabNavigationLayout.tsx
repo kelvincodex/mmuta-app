@@ -1,5 +1,5 @@
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import {NavigationLayoutProps} from "@/types/route-type";
+import {NavigationLayoutProps} from "@/app/types/route-type";
 import {StyleSheet, Text} from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 

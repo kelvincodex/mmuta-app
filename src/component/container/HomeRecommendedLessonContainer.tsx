@@ -1,8 +1,9 @@
 import {FlatList, StyleSheet, Text, View} from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
-import {HomeLearningData} from "@/toolkit/data/HomeLearningData";
+import {HomeLearningData} from "@/app/toolkit/data/HomeLearningData";
 import {SubjectCard} from "@/component/card/SubjectCard";
 import {RecommendedLessonCard} from "@/component/card/RecommendedLessonCard";
+import Animated, {FadeIn} from "react-native-reanimated";
 
 export const HomeRecommendedLessonContainer = () => {
   return(

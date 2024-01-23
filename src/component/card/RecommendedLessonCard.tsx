@@ -1,28 +1,31 @@
-import {Image, StyleSheet, Text, View} from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import Rate from "@/assets/icon/green-rate.svg"
 import Video from "@/assets/icon/video.svg"
-import {HomeLearningDataProps} from "@/toolkit/data/HomeLearningData";
+import {HomeLearningDataProps} from "@/app/toolkit/data/HomeLearningData";
+import Animated, {FadeIn} from "react-native-reanimated";
 
 interface SubjectCardProps {
     item: HomeLearningDataProps
 }
 export const RecommendedLessonCard = ({item}: SubjectCardProps) => {
   return(
-      <View style={styles.container}>
-        <Image source={require('@/assets/image/mathematics.png')} resizeMode={'cover'} style={{width: 162, height: 80, borderRadius: 5}} />
-          <Text style={styles.topic}>Lexis & Structure</Text>
-          <Text style={styles.title}>English</Text>
-          <Text style={styles.author}>by Melvin James</Text>
+      <Animated.View entering={FadeIn.duration(500).randomDelay()}>
+          <TouchableOpacity style={styles.container}>
+              <Image source={require('@/assets/image/mathematics.png')} resizeMode={'cover'} style={{width: 162, height: 80, borderRadius: 5}} />
+              <Text style={styles.topic}>Lexis & Structure</Text>
+              <Text style={styles.title}>English</Text>
+              <Text style={styles.author}>by Melvin James</Text>
 
-          <View style={{borderBottomWidth: 2, width: '100%', borderBottomColor: ThemeConstantUtil.COLOR.neutral["25"]}} />
+              <View style={{borderBottomWidth: 2, width: '100%', borderBottomColor: ThemeConstantUtil.COLOR.neutral["25"]}} />
 
-          <View style={{flexDirection: 'row', justifyContent:"space-between", alignItems:"center", width: '100%', paddingHorizontal: 15, transform: [{translateY: 15}]}}>
-              <Rate />
-              <Text style={styles.rate}>4.7</Text>
-              <Video />
-          </View>
-      </View>
+              <View style={{flexDirection: 'row', justifyContent:"space-between", alignItems:"center", width: '100%', paddingHorizontal: 15, transform: [{translateY: 15}]}}>
+                  <Rate />
+                  <Text style={styles.rate}>4.7</Text>
+                  <Video />
+              </View>
+          </TouchableOpacity>
+      </Animated.View>
   )
 }
 

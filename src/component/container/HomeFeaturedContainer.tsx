@@ -1,12 +1,14 @@
 import {View, Text, FlatList, Image, StyleSheet, ScrollView} from "react-native";
 import React from "react";
-import {HomeFeaturedData} from "@/toolkit/data/HomeFeaturedData";
+import {HomeFeaturedData} from "@/app/toolkit/data/HomeFeaturedData";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import {indexStyle} from "@/assets/style/Index";
+import Animated, {FadeIn} from "react-native-reanimated";
 
 export const HomeFeaturedContainer = () => {
   return(
-      <View style={{marginTop: 10}}>
+      <View
+          style={{marginTop: 10}}>
           <Text style={indexStyle.homeTitle}>Featured</Text>
           <ScrollView
             horizontal={true}
@@ -18,10 +20,10 @@ export const HomeFeaturedContainer = () => {
               {
                   HomeFeaturedData.map((item, index)=>{
                       return (
-                          <View key={index} style={{justifyContent: 'center'}}>
+                          <Animated.View entering={FadeIn.duration(500).randomDelay()} key={index} style={{justifyContent: 'center'}}>
                               <Image source={item.image} resizeMode={'cover'} style={styles.round}  />
                               <Text style={styles.text}>{item.title}</Text>
-                          </View>
+                          </Animated.View>
                       )
                   })
               }

@@ -1,5 +1,5 @@
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {NavigationLayoutProps} from "@/types/route-type";
+import {NavigationLayoutProps} from "@/app/types/route-type";
 
 
 export const StackNavigationLayout = ({screens, initialRouteName}: NavigationLayoutProps) => {

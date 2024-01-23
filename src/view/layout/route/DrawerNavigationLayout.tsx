@@ -1,5 +1,5 @@
 import {createDrawerNavigator} from "@react-navigation/drawer";
-import {NavigationLayoutProps} from "@/types/route-type";
+import {NavigationLayoutProps} from "@/app/types/route-type";
 import {StyleSheet, Text} from "react-native";
 import {SCREEN_WIDTH} from "@gorhom/bottom-sheet";
 import {CustomDrawerLayout} from "@/view/layout/route/CustomDrawerLayout";
@@ -13,6 +13,7 @@ export const DrawerNavigationLayout = ({screens, initialRouteName}:NavigationLay
         screenOptions={({navigation, route})=>({
             headerShown: false,
             drawerStyle: [styles.drawerStyle],
+            drawerHideStatusBarOnOpen: true,
             drawerLabel:({focused})=>{
                 const screen = screens.filter((value)=> value.name == route.name)[0]
                 return <Text style={styles.drawerLabel}>{screen.options.title}</Text>

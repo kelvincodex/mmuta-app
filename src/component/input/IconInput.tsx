@@ -8,7 +8,7 @@ interface BaseInputProps {
     label?: string,
     Icon?: React.FC<SvgProps>,
 }
-export const BaseInput = ({label, Icon, ...props}: BaseInputProps & TextInputProps) => {
+export const IconInput = ({label, Icon, ...props}: BaseInputProps & TextInputProps) => {
   return(
       <View style={baseStyle.textInputContainer}>
           <Text style={baseStyle.textInputLabel}>{label}</Text>

@@ -1,6 +1,6 @@
 import {useFormik} from "formik";
 import {StyleSheet, Text, View} from "react-native";
-import {BaseInput} from "@/component/input/BaseInput";
+import {IconInput} from "@/component/input/IconInput";
 import BaseTelephone from "@/assets/icon/base-telephone.svg"
 import BasePadlock from "@/assets/icon/base-padlock.svg"
 import {BaseButton} from "@/component/button/BaseButton";
@@ -20,8 +20,8 @@ export const SignupFormik = () => {
     })
   return(
       <View style={{marginTop: 30, gap: 20, alignItems:"center"}}>
-          <BaseInput label={'Phone Number'} Icon={BaseTelephone} placeholder={'Enter your phone number'} />
-          <BaseInput label={'Password'} Icon={BasePadlock} placeholder={'Enter your password'} />
+          <IconInput label={'Phone Number'} Icon={BaseTelephone} placeholder={'Enter your phone number'} />
+          <IconInput label={'Password'} Icon={BasePadlock} placeholder={'Enter your password'} />
 
           <View style={{width: 280, flexDirection: 'row', gap: 10, alignItems:"flex-start", alignSelf:"flex-start"}}>
               <Checkbox style={styles.checkbox} />

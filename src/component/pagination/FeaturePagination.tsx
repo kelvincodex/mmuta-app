@@ -1,7 +1,7 @@
 import Animated, {interpolateColor, SharedValue, useAnimatedStyle} from "react-native-reanimated"
 import {Dot} from "@/component/util/Dot";
 import {Dimensions, StyleSheet} from "react-native";
-import {FeatureData} from "@/toolkit/data/FeatureData";
+import {FeatureData} from "@/app/toolkit/data/FeatureData";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 
 interface FeaturePaginationProps {

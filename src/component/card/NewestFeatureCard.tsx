@@ -2,10 +2,13 @@ import {Image, StyleSheet, Text, View} from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import Cancel  from "@/assets/icon/cancel.svg"
 import {BaseButton} from "@/component/button/BaseButton";
+import Animated, {FadeIn, SlideInLeft, SlideInRight} from "react-native-reanimated";
 
 export const NewestFeatureCard = () => {
   return(
-      <View style={styles.container}>
+      <Animated.View
+          entering={FadeIn.duration(500).randomDelay()}
+          style={styles.container}>
         <View style={styles.tagContainer}>
             <Text style={styles.tagText}>Newest feature</Text>
         </View>
@@ -18,7 +21,7 @@ export const NewestFeatureCard = () => {
             </View>
             <Image source={require('@/assets/image/newestFeature.png')}  />
         </View>
-      </View>
+      </Animated.View>
   )
 }
 

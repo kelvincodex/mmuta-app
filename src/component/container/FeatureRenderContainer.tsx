@@ -1,9 +1,9 @@
 import {Image, ImageBackground, StyleSheet, Text, View} from "react-native";
 import {indexStyle} from "@/assets/style/Index";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
-import {FeatureRenderContainerProps} from "@/types/component-type";
+import {FeatureRenderContainerProps} from "@/app/types/component-type";
 import Animated, {useAnimatedStyle} from "react-native-reanimated";
-import {FeatureData} from "@/toolkit/data/FeatureData";
+import {FeatureData} from "@/app/toolkit/data/FeatureData";
 import {RouteHelperUtil} from "@/util/helper/RouteHelperUtil";
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
 import {useNavigation} from "@react-navigation/native";

@@ -2,10 +2,11 @@ import {Image, StyleSheet, Text, View} from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import StackBook  from "@/assets/icon/stack-book.svg"
 import Cancel  from "@/assets/icon/base-cancel.svg"
+import Animated, {BounceIn} from "react-native-reanimated";
 export const EarlierContainer = () => {
 
   return(
-      <View>
+      <Animated.View entering={BounceIn.duration(500)}>
           <View style={styles.content}>
               <Text style={{color: ThemeConstantUtil.COLOR.neutral["75"], fontFamily: ThemeConstantUtil.FONT_FAMILY.montserratMedium, fontSize: 16}}>Earlier</Text>
           </View>
@@ -19,7 +20,7 @@ export const EarlierContainer = () => {
               </View>
               <Cancel style={{transform: [{translateY: -15}]}} />
           </View>
-      </View>
+      </Animated.View>
   )
 }
 

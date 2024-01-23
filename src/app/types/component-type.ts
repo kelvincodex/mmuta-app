@@ -1,5 +1,5 @@
 import {StyleProp, TextStyle, ViewStyle} from "react-native";
-import {FeatureDataProps} from "@/types/toolkit-type";
+import {FeatureDataProps} from "@/app/types/toolkit-type";
 import {SharedValue} from "react-native-reanimated";
 
 export interface BaseButtonProps {

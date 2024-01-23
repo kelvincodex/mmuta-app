@@ -1,13 +1,20 @@
-import {StyleSheet, Text, TextInput, View} from "react-native";
+import {StyleProp, StyleSheet, Text, TextInput, TextInputProps, View, ViewStyle} from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import Search from "@/assets/icon/base-search.svg"
-export const SearchInput = () => {
+import Animated, {FadeIn} from "react-native-reanimated";
+
+interface SearchInputProps {
+    containerStyle?: StyleProp<ViewStyle>,
+}
+export const SearchInput = ({containerStyle, ...props}: SearchInputProps & TextInputProps) => {
   return(
-      <View style={styles.container}>
+      <Animated.View
+          entering={FadeIn.duration(1000).randomDelay()}
+          style={[styles.container, containerStyle]}>
           <Search  />
-          <TextInput cursorColor={ThemeConstantUtil.COLOR.neutral["25"]} placeholderTextColor={ThemeConstantUtil.COLOR.neutral["25"]} style={styles.input} placeholder={"Search for a subject"} />
+          <TextInput cursorColor={ThemeConstantUtil.COLOR.neutral["25"]} placeholderTextColor={ThemeConstantUtil.COLOR.neutral["25"]} style={styles.input}  {...props} />
           <Text style={styles.goText}>Go</Text>
-      </View>
+      </Animated.View>
   )
 }
 

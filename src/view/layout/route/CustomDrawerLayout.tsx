@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {DrawerContentComponentProps, DrawerContentScrollView, DrawerItemList} from "@react-navigation/drawer";
 import {indexStyle} from "@/assets/style/Index";
 import {ImageAvatar} from "@/component/avatar/ImageAvatar";
@@ -32,8 +32,9 @@ export const CustomDrawerLayout = ({...props}: CustomDrawerLayoutProps & DrawerC
 
                   <Cancel onPress={()=> props.navigation.closeDrawer()} />
               </View>
-
-            <DrawerItemList {...props} />
+            <View style={{flex: 1,}}>
+                <DrawerItemList {...props} />
+            </View>
 
               <TouchableOpacity style={styles.logout}>
                   <Logout />

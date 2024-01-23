@@ -1,7 +1,7 @@
 import { NavigationContainer} from "@react-navigation/native";
 import * as SplashScreen from 'expo-splash-screen';
 import {useFonts} from "expo-font";
-import {Fonts} from "@/plugins/Fonts";
+import {Fonts} from "@/app/plugins/Fonts";
 import {useCallback} from "react";
 import {RenderNavigation} from "@/router/__render";
 export const RouteContainerProvider = () => {

@@ -6,6 +6,7 @@ import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import {RouteHelperUtil} from "@/util/helper/RouteHelperUtil";
 import {useNavigation} from "@react-navigation/native";
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
+import Animated, {LightSpeedInLeft} from "react-native-reanimated";
 
 export const GetStartedScreen = () => {
     const navigation = useNavigation()
@@ -20,7 +21,7 @@ export const GetStartedScreen = () => {
         <StatusBar hidden={false} style={'light'} />
 
           <Image style={styles.logo} source={require('@/assets/image/group-logo.png')} resizeMode={'cover'}  />
-          <View style={styles.button}>
+          <View  style={styles.button}>
               <BaseButton onPress={signup} type={'base'} containerStyle={{backgroundColor: ThemeConstantUtil.COLOR.primary["100"]}}  title={'Sign Up'} />
               <BaseButton onPress={signIn} containerStyle={{borderColor: ThemeConstantUtil.COLOR.white}} textStyle={{color: ThemeConstantUtil.COLOR.white}} title={'Sign In'} />
           </View>
