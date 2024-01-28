@@ -14,6 +14,8 @@ import Settings from "@/assets/icon/settings.svg"
 import RateUs from "@/assets/icon/rate-us.svg"
 import LearnToEarn from "@/assets/icon/learnToEarn.svg"
 import {ProfileScreen} from "@/view/screen/page/ProfileScreen";
+import {MyLessonScreen} from "@/view/screen/page/MyLessonScreen";
+import {MyStatsScreen} from "@/view/screen/page/MyStatsScreen";
 
 
 
@@ -60,7 +62,7 @@ export const drawerRoute = [
     },
     {
         name: RouterConstantUtil.drawer.stats,
-        component: HomeScreen,
+        component: MyStatsScreen,
         options: {type: NavigatorTypeConstantUtil.Drawer, title: 'My Stats', icon: Stats}
     },
     {
@@ -70,7 +72,7 @@ export const drawerRoute = [
     },
     {
         name: RouterConstantUtil.drawer.lesson,
-        component: HomeScreen,
+        component: MyLessonScreen,
         options: {type: NavigatorTypeConstantUtil.Drawer, title: 'My Lesson', icon: Lesson}
     },
     {

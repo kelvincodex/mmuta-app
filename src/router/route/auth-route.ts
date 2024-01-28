@@ -18,4 +18,5 @@ export const authRoute = [
         component: SignInScreen,
         options: {type: NavigatorTypeConstantUtil.Stack}
     },
+
 ]

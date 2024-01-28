@@ -8,7 +8,7 @@ export const LearnToEarnModal = ({...props}: ModalProps) => {
     const [visible, setVisible] = useState<boolean>(true)
 
   return(
-        <SamplePopupModal visible={visible}  containerStyle={{transform: [{translateY: -200}]}}>
+        <SamplePopupModal visible={visible}  oncloseFunction={()=> setVisible(!visible)} containerStyle={{transform: [{translateY: -200 }]}}>
             <Image source={require('@/assets/image/learn-to-earn-pop-tag.png')} resizeMode={'cover'} style={{height: 162 }}  />
             <View style={{transform: [{translateY: -110}], alignItems: 'center', paddingHorizontal: 40}}>
                 <Text style={styles.title}>You must have completed learning at least 3 subjects to participate</Text>

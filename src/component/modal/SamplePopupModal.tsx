@@ -15,14 +15,15 @@ export const SamplePopupModal = ({containerStyle, oncloseFunction, children,...p
         <Modal
             transparent={true}
             statusBarTranslucent={true}
-            style={{alignItems:'center', justifyContent:'center'}}
             onRequestClose={oncloseFunction && oncloseFunction}
+            accessibilityRole={'alert'}
+            animationType={"slide"}
             {...props}
         >
 
-            <View    style={{flex: 1, justifyContent: 'flex-end', alignItems:'center', backgroundColor: 'hsla(0, 0%, 0%, .3)' }}>
+            <View  style={{flex: 1, justifyContent: 'center', alignItems:'center', backgroundColor: 'hsla(0, 0%, 0%, .3)' }}>
                 <Animated.View entering={BounceIn.duration(500).delay(2000)}
-                               style={[{width: 370, height: 532, borderRadius: 10, overflow: 'hidden', backgroundColor: ThemeConstantUtil.COLOR.white, transform:[{translateY: -100}]}, containerStyle]}>
+                               style={[{width: 370, height: 532, borderRadius: 10, overflow: 'hidden', backgroundColor: ThemeConstantUtil.COLOR.white, transform:[{translateY: 100}]}, containerStyle]}>
                     <BaseCancel onPress={oncloseFunction && oncloseFunction} style={{position: 'absolute', zIndex: 999, right: 20, top: 20}} />
                     {children}
                 </Animated.View>
