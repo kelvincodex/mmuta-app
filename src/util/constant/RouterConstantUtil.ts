@@ -4,10 +4,19 @@ export const RouterConstantUtil ={
         language: "Language screen",
         getStarted: "Get Started screen",
         feature: "Feature screen",
+        welcome: "Welcome screen",
     },
     auth: {
         signup: "Sign up screen",
         signIn: "Sign In screen",
+        confirmAccount: "Confirm Account screen",
+        resetPasswordVerification: "Reset Password Verification screen",
+        resetPassword: "Reset Password screen",
+        authStatus: "Auth Status screen",
+        intro: "Intro screen",
+    },
+    page:{
+        topic: "Topic Screen"
     },
     tab:{
         home: "Home screen",

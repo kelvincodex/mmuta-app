@@ -1,11 +1,12 @@
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
-import {StartupScreen} from "@/view/screen/onboarding/StartupScreen";
 import {NavigatorTypeConstantUtil} from "@/util/constant/NavigatorTypeConstantUtil";
-import {LanguageScreen} from "@/view/screen/onboarding/LanguageScreen";
-import {GetStartedScreen} from "@/view/screen/onboarding/GetStartedScreen";
-import {FeatureScreen} from "@/view/screen/onboarding/FeatureScreen";
 import {SignupScreen} from "@/view/screen/auth/SignupScreen";
 import {SignInScreen} from "@/view/screen/auth/SignInScreen";
+import {AuthStatusScreen} from "@/view/screen/auth/AuthStatusScreen";
+import {ResetPasswordVerificationScreen} from "@/view/screen/auth/ResetPasswordVerificationScreen";
+import {ResetPasswordScreen} from "@/view/screen/auth/ResetPasswordScreen";
+import {ConfirmAccountScreen} from "@/view/screen/auth/ConfirmAccountScreen";
+import {IntroScreen} from "@/view/screen/auth/IntroScreen";
 
 export const authRoute = [
     {
@@ -18,5 +19,31 @@ export const authRoute = [
         component: SignInScreen,
         options: {type: NavigatorTypeConstantUtil.Stack}
     },
+    {
+        name: RouterConstantUtil.auth.authStatus,
+        component: AuthStatusScreen,
+        options: {type: NavigatorTypeConstantUtil.Stack}
+    },
+    {
+        name: RouterConstantUtil.auth.confirmAccount,
+        component: ConfirmAccountScreen,
+        options: {type: NavigatorTypeConstantUtil.Stack}
+    },
+    {
+        name: RouterConstantUtil.auth.resetPasswordVerification,
+        component: ResetPasswordVerificationScreen,
+        options: {type: NavigatorTypeConstantUtil.Stack}
+    },
+    {
+        name: RouterConstantUtil.auth.resetPassword,
+        component: ResetPasswordScreen,
+        options: {type: NavigatorTypeConstantUtil.Stack}
+    },
+    {
+        name: RouterConstantUtil.auth.intro,
+        component: IntroScreen,
+        options: {type: NavigatorTypeConstantUtil.Stack}
+    },
+
 
 ]

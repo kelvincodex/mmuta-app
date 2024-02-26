@@ -5,7 +5,14 @@ import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import {BaseButton} from "@/component/button/BaseButton";
 
 export const LearnToEarnModal = ({...props}: ModalProps) => {
-    const [visible, setVisible] = useState<boolean>(true)
+    const [visible, setVisible] = useState<boolean>(false)
+
+    useLayoutEffect(() => {
+        const timeout = setTimeout(()=>setVisible(true), 10000 )
+
+        return () => clearTimeout(timeout)
+
+    }, []);
 
   return(
         <SamplePopupModal visible={visible}  oncloseFunction={()=> setVisible(!visible)} containerStyle={{transform: [{translateY: -200 }]}}>

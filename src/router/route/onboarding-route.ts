@@ -4,6 +4,7 @@ import {NavigatorTypeConstantUtil} from "@/util/constant/NavigatorTypeConstantUt
 import {LanguageScreen} from "@/view/screen/onboarding/LanguageScreen";
 import {GetStartedScreen} from "@/view/screen/onboarding/GetStartedScreen";
 import {FeatureScreen} from "@/view/screen/onboarding/FeatureScreen";
+import {WelcomeScreen} from "@/view/screen/onboarding/WelcomeScreen";
 
 export const onboardingRoute = [
     {
@@ -24,6 +25,11 @@ export const onboardingRoute = [
     {
         name: RouterConstantUtil.onboarding.feature,
         component: FeatureScreen,
+        options: {type: NavigatorTypeConstantUtil.Stack}
+    },
+    {
+        name: RouterConstantUtil.onboarding.welcome,
+        component: WelcomeScreen,
         options: {type: NavigatorTypeConstantUtil.Stack}
     },
 ]

@@ -4,6 +4,8 @@ import {useFonts} from "expo-font";
 import {Fonts} from "@/app/plugins/Fonts";
 import {useCallback} from "react";
 import {RenderNavigation} from "@/router/__render";
+import {RateUsModal} from "@/component/modal/RateUsModal";
+import {LearnToEarnModal} from "@/component/modal/LearnToEarnModal";
 export const RouteContainerProvider = () => {
     const [fontsLoad] = useFonts(Fonts)
 
@@ -19,7 +21,7 @@ export const RouteContainerProvider = () => {
 
   return (
       <NavigationContainer onReady={onLayoutRootView}>
-            <RenderNavigation />
+          <RenderNavigation />
       </NavigationContainer>
   )
 }

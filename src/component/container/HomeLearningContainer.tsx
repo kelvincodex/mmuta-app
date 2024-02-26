@@ -3,8 +3,15 @@ import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import {HomeLearningData} from "@/app/toolkit/data/HomeLearningData";
 import {SubjectCard} from "@/component/card/SubjectCard";
 import Animated, {FadeIn} from "react-native-reanimated";
+import {RouteHelperUtil} from "@/util/helper/RouteHelperUtil";
+import {useNavigation} from "@react-navigation/native";
+import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
 
 export const HomeLearningContainer = () => {
+    const navigation = useNavigation();
+    function topicsToRoute() {
+        RouteHelperUtil.navigate(navigation, RouterConstantUtil.page.topic)
+    }
   return(
       <View
           style={styles.container}>
@@ -17,7 +24,7 @@ export const HomeLearningContainer = () => {
               {
                   HomeLearningData.map((value, index)=>{
                       return(
-                          <SubjectCard item={value} key={index} />
+                          <SubjectCard  onPress={topicsToRoute} item={value} key={index} />
                       )
                   })
               }

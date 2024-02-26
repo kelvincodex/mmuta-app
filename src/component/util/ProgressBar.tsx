@@ -1,12 +1,16 @@
-import {StyleSheet, View} from "react-native";
+import {StyleProp, StyleSheet, View, ViewStyle} from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 
 
+interface ProgressBarProps {
+    containerStyle?: StyleProp<ViewStyle>,
+    innerContainerStyle?: StyleProp<ViewStyle>,
+}
 
-export const ProgressBar = () => {
+export const ProgressBar = ({containerStyle, innerContainerStyle}: ProgressBarProps) => {
   return(
-      <View style={styles.container}>
-          <View style={styles.innerContainer} />
+      <View style={[styles.container, containerStyle]}>
+          <View style={[styles.innerContainer, innerContainerStyle]} />
       </View>
   )
 }

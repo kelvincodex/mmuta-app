@@ -7,7 +7,7 @@ import {StatusBar} from "expo-status-bar";
 export const LanguageScreen = () => {
   return(
     <View style={indexStyle.baseContainer}>
-        <StatusBar hidden={true} />
+        <StatusBar hidden={true} backgroundColor={'transparent'} style={'light'} />
         <ImageBackground style={indexStyle.language_curveTop} source={require('@/assets/image/languageTopCurve.png')}  resizeMode={'cover'}>
             <Image style={indexStyle.language_logo} source={require('@/assets/image/logo.png')} resizeMode={'cover'} />
         </ImageBackground>

@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity, TouchableOpacityProps, View} from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import {ImageAvatar} from "@/component/avatar/ImageAvatar";
 import Player from "@/assets/icon/base-player.svg"
@@ -10,12 +10,12 @@ import Animated, {SlideInLeft, SlideOutRight} from "react-native-reanimated";
 interface SubjectCardProps {
     item: HomeLearningDataProps
 }
-export const SubjectCard = ({item}: SubjectCardProps) => {
+export const SubjectCard = ({item, ...props}: SubjectCardProps & TouchableOpacityProps) => {
   return(
       <Animated.View
         entering={SlideInLeft.duration(500).randomDelay()}
       >
-          <TouchableOpacity style={styles.container}>
+          <TouchableOpacity style={styles.container} {...props}>
               <View style={{flexDirection: 'row', gap: 10, marginBottom: 20, }}>
                   <ImageAvatar src={require('@/assets/image/feature-subject.png')} containerStyle={{width: 45, height: 45}} />
                   <View>

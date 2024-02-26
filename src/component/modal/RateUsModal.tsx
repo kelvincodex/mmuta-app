@@ -11,7 +11,9 @@ export const RateUsModal = ({...props}: ModalProps) => {
     const [visible, setVisible] = useState<boolean>(false)
 
     useLayoutEffect(() => {
-        setVisible(true)
+        const timeout = setTimeout(()=>setVisible(true), 5000 )
+
+        return () => clearTimeout(timeout)
     }, []);
   return(
     <SamplePopupModal visible={visible} oncloseFunction={()=> setVisible(!visible)}>

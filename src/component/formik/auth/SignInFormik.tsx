@@ -16,7 +16,15 @@ export const SignInFormik = () => {
     }
 
     function navigateToHome() {
-        RouteHelperUtil.navigate(navigation, RouterConstantUtil.tab.home)
+        RouteHelperUtil.navigate(navigation, RouterConstantUtil.onboarding.welcome)
+    }
+
+    function navigateToIntro() {
+        RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.intro)
+    }
+
+    function navigateToForgetPassword() {
+        RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.resetPasswordVerification)
     }
     const formik = useFormik({
          initialValues:{},
@@ -27,9 +35,9 @@ export const SignInFormik = () => {
           <IconInput label={'Phone Number'} Icon={BaseTelephone} placeholder={'Enter your phone number'} />
           <IconInput label={'Password'} Icon={BasePadlock} placeholder={'Enter your password'} />
 
-         <Text style={styles.activeText}>Forgot password?</Text>
+         <Text onPress={navigateToForgetPassword} style={styles.activeText}>Forgot password?</Text>
 
-          <BaseButton onPress={navigateToHome} containerStyle={{width: 314, height: 62}} type={'base'} title={'Sign In'} />
+          <BaseButton onPress={navigateToIntro} containerStyle={{width: 314, height: 62}} type={'base'} title={'Sign In'} />
 
           <Text style={styles.question}>Don’t have an account? <Text onPress={navigateToSignUp} style={styles.activeQuestion}>Sign Up</Text></Text>
       </View>

@@ -58,10 +58,12 @@ export const FeatureGroupButton = ({index, reff}: FeatureGroupButtonProps) => {
         <Animated.View style={singleNextStyle}>
             <BaseButton onPress={next} type={'base'}  title={'Next'} />
         </Animated.View>
+
           <Animated.View style={[style.group, groupButtonStyle]}>
-            <BaseButton containerStyle={{width: '50%'}} onPress={prev} type={'base'}  title={'Prev'} />
-            <BaseButton containerStyle={{width: '50%'}} onPress={next} type={'base'}  title={'Next'} />
+            <BaseButton containerStyle={{width: 154 }} onPress={prev} type={'base'}  title={'Prev'} />
+            <BaseButton containerStyle={{width: 154}} onPress={next} type={'base'}  title={'Next'} />
         </Animated.View>
+
           <Animated.View style={singleContinueStyle}>
             <BaseButton onPress={continues} type={'base'}  title={'Continue'} />
         </Animated.View>

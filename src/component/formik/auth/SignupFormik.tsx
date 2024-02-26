@@ -14,6 +14,9 @@ export const SignupFormik = () => {
     function navigateToSignIn() {
         RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.signIn)
     }
+    function navigateToConfirm() {
+        RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.confirmAccount)
+    }
     const formik = useFormik({
          initialValues:{},
          onSubmit: ()=>{},
@@ -27,7 +30,7 @@ export const SignupFormik = () => {
               <Checkbox style={styles.checkbox} />
               <Text style={styles.text}>By signing up, you agree to our  <Text style={styles.activeText}>Terms and Conditions</Text></Text>
           </View>
-          <BaseButton containerStyle={{width: 314, height: 62}} type={'base'} title={'Sign up'} />
+          <BaseButton onPress={navigateToConfirm} containerStyle={{width: 314, height: 62}} type={'base'} title={'Sign up'} />
 
           <Text style={styles.question}>Have an account already? <Text onPress={navigateToSignIn} style={styles.activeQuestion}>Sign In</Text></Text>
       </View>

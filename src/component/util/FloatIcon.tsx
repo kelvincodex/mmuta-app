@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         height: 55,
         borderRadius: 50,
         position: 'absolute',
-        zIndex: 999,
+        zIndex: 9999,
         overflow: 'hidden',
         backgroundColor: ThemeConstantUtil.COLOR.accent["100"],
         justifyContent:"center",
