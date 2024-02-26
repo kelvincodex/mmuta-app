@@ -5,7 +5,7 @@ export const baseStyle = StyleSheet.create({
     baseButtonContainer:{
         borderWidth: 2,
         width: 276,
-        height: 46,
+        height: 44,
         borderRadius: 50,
         borderColor: ThemeConstantUtil.COLOR.secondary["100"],
         justifyContent:"center",
@@ -13,7 +13,7 @@ export const baseStyle = StyleSheet.create({
     },
     baseButtonTitle: {
         fontFamily: ThemeConstantUtil.FONT_FAMILY.montserratBold,
-        fontSize: 20,
+        fontSize: 18,
         lineHeight: 24,
         color: ThemeConstantUtil.COLOR.secondary["100"]
     },

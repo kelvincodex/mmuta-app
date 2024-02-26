@@ -6,7 +6,7 @@ import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import {RouteHelperUtil} from "@/util/helper/RouteHelperUtil";
 import {useNavigation} from "@react-navigation/native";
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
-import Animated, {LightSpeedInLeft} from "react-native-reanimated";
+import Animated, {FadeInLeft, LightSpeedInLeft} from "react-native-reanimated";
 
 export const GetStartedScreen = () => {
     const navigation = useNavigation()
@@ -20,11 +20,12 @@ export const GetStartedScreen = () => {
       <ImageBackground style={[indexStyle.flex, indexStyle.bottom]} source={require('@/assets/image/getStarted.png')} resizeMethod={'scale'} resizeMode={'cover'}>
         <StatusBar hidden={false} style={'light'} />
 
-          <Image style={styles.logo} source={require('@/assets/image/group-logo.png')} resizeMode={'cover'}  />
-          <View  style={styles.button}>
-              <BaseButton onPress={signup} type={'base'} containerStyle={{backgroundColor: ThemeConstantUtil.COLOR.primary["100"]}}  title={'Sign Up'} />
-              <BaseButton onPress={signIn} containerStyle={{borderColor: ThemeConstantUtil.COLOR.white}} textStyle={{color: ThemeConstantUtil.COLOR.white}} title={'Sign In'} />
-          </View>
+          <Image  style={styles.logo} source={require('@/assets/image/group-logo.png')} resizeMode={'cover'}  />
+
+          <Animated.View entering={FadeInLeft.duration(800)} style={styles.button}>
+              <BaseButton animated={false} onPress={signup} type={'base'} containerStyle={{backgroundColor: ThemeConstantUtil.COLOR.primary["100"]}}  title={'Sign Up'} />
+              <BaseButton animated={false} onPress={signIn} containerStyle={{borderColor: ThemeConstantUtil.COLOR.white}} textStyle={{color: ThemeConstantUtil.COLOR.white}} title={'Sign In'} />
+          </Animated.View>
       </ImageBackground>
   )
 }

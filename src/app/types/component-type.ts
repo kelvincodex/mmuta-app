@@ -6,7 +6,8 @@ export interface BaseButtonProps {
     title: string,
     textStyle?: StyleProp<TextStyle>
     containerStyle?: StyleProp<ViewStyle>
-    type?: 'base'|'border'|'normal'
+    type?: 'base'|'border'|'normal',
+    animated?: boolean
 }
 
 export interface FeatureRenderContainerProps {

@@ -46,7 +46,7 @@ export const LanguageContent = () => {
                                     <BaseButton
                                         onPress={() =>handleSelected(item)}
                                         type={selected == item ? 'base' : 'border'}
-                                        textStyle={[{fontSize: languageData == LanguageData[2] ? 18 : 20 },]}
+                                        textStyle={[]}
                                         title={item}
                                         containerStyle={[{backgroundColor: selected == item ? ThemeConstantUtil.COLOR.secondary["100"] : ThemeConstantUtil.COLOR.white, marginVertical: 6}]}
                                     />
