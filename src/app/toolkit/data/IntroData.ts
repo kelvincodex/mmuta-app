@@ -1,6 +1,7 @@
 import React, {ReactElement} from "react";
 import {IntroNameFormik} from "@/component/formik/auth/intro/IntroNameFormik";
 import {IntroLiveFormik} from "@/component/formik/auth/intro/IntroLiveFormik";
+import {BirthdayFormik} from "@/component/formik/auth/intro/BirthdayFormik";
 import {DateDropdown} from "@/component/dropdown/DateDropdown";
 
 export interface IntroDataProps {
@@ -26,7 +27,7 @@ export const IntroData: IntroDataProps[] =[
         id: 3,
         question: 'When is your birthday?',
         subQuestion: null,
-        component: IntroLiveFormik
+        component: BirthdayFormik
     },
     {
         id: 4,

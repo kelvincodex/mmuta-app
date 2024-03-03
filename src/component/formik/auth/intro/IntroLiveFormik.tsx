@@ -2,6 +2,9 @@ import {View} from "react-native";
 import {PlainInput} from "@/component/input/PlainInput";
 import {BaseButton} from "@/component/button/BaseButton";
 import {InputSearchDropdown} from "@/component/dropdown/InputSearchDropdown";
+import {intro} from "@/store/modules/intro";
+import {useDispatch} from "react-redux";
+import {AppDispatch} from "@/store";
 
 
 export const IntroLiveFormik = () => {
@@ -17,10 +20,16 @@ export const IntroLiveFormik = () => {
             value: 'Ivory Coast'
         }
     ]
+
+    const dispatch = useDispatch<AppDispatch>()
+    function next() {
+        dispatch(intro.mutation.setIntroData(2))
+
+    }
   return(
       <View style={{gap: 15}}>
             <InputSearchDropdown placeholder={'Select a country'}  data={country}/>
-          <BaseButton  containerStyle={{marginTop: 120}} type={'base'} title={'Next'} />
+          <BaseButton onPress={next} containerStyle={{marginTop: 120}} type={'base'} title={'Next'} />
       </View>
   )
 }

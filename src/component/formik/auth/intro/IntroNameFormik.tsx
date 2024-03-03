@@ -11,7 +11,7 @@ export const IntroNameFormik = () => {
     const dispatch = useDispatch<AppDispatch>()
 
     function next() {
-        dispatch(intro.mutation.setIntroData(IntroData[1]))
+        dispatch(intro.mutation.setIntroData(1))
     }
   return(
       <View style={{gap: 15}}>

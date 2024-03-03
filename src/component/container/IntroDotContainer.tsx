@@ -7,6 +7,7 @@ interface IntroDotContainerProps {
     currentIndex: number
 }
 export const IntroDotContainer = ({currentIndex}: IntroDotContainerProps) => {
+    console.log(currentIndex)
   return(
       <View style={styles.container}>
           {
