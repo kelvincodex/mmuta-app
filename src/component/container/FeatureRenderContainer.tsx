@@ -1,13 +1,18 @@
 import {Image, ImageBackground, StyleSheet, Text, View} from "react-native";
 import {indexStyle} from "@/assets/style/Index";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
-import {FeatureRenderContainerProps} from "@/app/types/component-type";
-import Animated, {useAnimatedStyle} from "react-native-reanimated";
-import {FeatureData} from "@/app/toolkit/data/FeatureData";
+import Animated, {SharedValue, useAnimatedStyle} from "react-native-reanimated";
+import {FeatureData, FeatureDataProps} from "@/app/toolkit/data/FeatureData";
 import {RouteHelperUtil} from "@/util/helper/RouteHelperUtil";
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
 import {useNavigation} from "@react-navigation/native";
 
+
+export interface FeatureRenderContainerProps {
+    item: FeatureDataProps,
+    index: number,
+    flatListIndex: SharedValue<number>
+}
 export const FeatureRenderContainer =({item, index, flatListIndex}: FeatureRenderContainerProps)=>{
     const navigation = useNavigation()
     const lastStyle = useAnimatedStyle(()=>{
@@ -30,12 +35,16 @@ export const FeatureRenderContainer =({item, index, flatListIndex}: FeatureRende
     return (
         <ImageBackground style={indexStyle.feature_curve} source={item.image} resizeMode={'cover'} resizeMethod={'scale'} >
             <Animated.View style={[indexStyle.justifyBetween, {paddingHorizontal: 30, marginTop: 50}, initStyle]}>
-                <Image style={{}} source={require('@/assets/image/round-logo.png')} resizeMethod={'scale'}  resizeMode={'cover'} />
+                <View style={{width: 72, height: 72}}>
+                    <Image style={{width: '100%', height: '100%'}} source={require('@/assets/image/round-logo.png')} resizeMethod={'scale'}  resizeMode={'cover'} />
+                </View>
                 <Text onPress={skip} style={indexStyle.skip}>SKIP</Text>
             </Animated.View>
 
             <Animated.View style={[indexStyle.justifyCenter, { marginTop: 120, marginBottom: -50}, lastStyle]}>
-                <Image style={{}} source={require('@/assets/image/round-logo.png')} resizeMethod={'scale'}  resizeMode={'cover'} />
+                <View style={{width: 87, height: 87}}>
+                    <Image style={{width: '100%', height: '100%'}} source={require('@/assets/image/round-logo.png')} resizeMethod={'scale'}  resizeMode={'cover'} />
+                </View>
             </Animated.View>
             <View style={style.textBox}>
                 <Text style={style.topic}>{item.topic}</Text>

@@ -41,8 +41,9 @@ export const baseStyle = StyleSheet.create({
     },
 
     eyeIconContainer:{
-        flex: .15
-
+        flex: .15,
+        alignItems: 'center',
+        justifyContent:'center'
     },
 
     iconContainer:{

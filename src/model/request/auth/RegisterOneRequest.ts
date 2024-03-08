@@ -1,4 +1,4 @@
-export type InitialRegisterProp = {
+export type RegisterOneProp = {
     type: boolean,
     email: string,
     password: string,
@@ -9,10 +9,10 @@ export type InitialRegisterProp = {
     phone: string
 }
 
-export const RegisterOneRequest: InitialRegisterProp = {
+export const RegisterOneRequest: RegisterOneProp = {
     type: true,
-    email: "morahthankgod@gmail.com",
-    password: "123456",
+    email: "",
+    password: "",
     phone: "07042199640",
     language: 1,
     disability: 1,

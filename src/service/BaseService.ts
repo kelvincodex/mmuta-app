@@ -1,5 +1,6 @@
 import axios from "axios";
 import {setupCache} from "axios-cache-adapter";
+import {config} from "@/app/config";
 
 const cache = setupCache({
     maxAge: 15 * 60 * 1000,
@@ -9,21 +10,19 @@ const ApiClient = (others: any) => {
     const token = others.getState().auth.token
     //axiosInstance
     const axiosInstance = axios.create({
-        //todo prod
-        //baseURL: appConfig.prod.baseURL,
-        //todo dev
-        baseURL: "",
+        baseURL: config.baseUrl,
         withCredentials: false,
-        adapter: cache.adapter,
+        // adapter: cache.adapter,
+        adapter: "",
         headers: {
-            "Content-Type": "application/json",
             Accept: "application/json",
         }
     })
 
     //interceptors request
     axiosInstance.interceptors.request.use(function (config) {
-        config.headers.Authorization =  `${token}`
+        config.headers.Authorization =  `Bearer ${token}`
+        console.log("TOKEN SET ===> ", !!token)
         console.log("Headers ===> ", config.headers)
         console.log("Url ===> ", config.baseURL!! + config.url)
         console.log("Request ===> ", config.data)
@@ -38,7 +37,7 @@ const ApiClient = (others: any) => {
         console.log("Response ===> ",response.data)
         return response
     },(error)=>{
-        console.log("Response Error ===> ",error.response.data)
+        console.log("Response Error ===> ",error)
         return Promise.reject(error)
     })
     return axiosInstance
@@ -46,5 +45,5 @@ const ApiClient = (others: any) => {
 
 
 export const BaseService = {
-    appClient: ApiClient,
+    apiClient: ApiClient,
 }

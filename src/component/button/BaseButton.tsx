@@ -1,9 +1,15 @@
-import {TouchableOpacity, Text, TouchableOpacityProps, View} from "react-native";
-import {BaseButtonProps} from "@/app/types/component-type";
+import {TouchableOpacity, Text, TouchableOpacityProps, View, StyleProp, TextStyle, ViewStyle} from "react-native";
 import {baseStyle} from "@/assets/style/__base";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import Animated, {BounceIn, BounceInLeft, FadeIn} from "react-native-reanimated";
 
+export interface BaseButtonProps {
+    title: string,
+    textStyle?: StyleProp<TextStyle>
+    containerStyle?: StyleProp<ViewStyle>
+    type?: 'base'|'border'|'normal',
+    animated?: boolean
+}
 export const BaseButton = ({title, textStyle, type,containerStyle, animated,...props}: BaseButtonProps & TouchableOpacityProps) => {
     const backgroundColor = type == 'base' ? ThemeConstantUtil.COLOR.secondary["100"] : type == 'border' ? "transparent" : ThemeConstantUtil.COLOR.white
     const borderWidth = type == 'border'? 2 : 0
@@ -13,7 +19,7 @@ export const BaseButton = ({title, textStyle, type,containerStyle, animated,...p
 
           {
               animated ?
-                  <Animated.View entering={FadeIn.duration(500).randomDelay()}>
+                  <Animated.View entering={FadeIn.duration(350)}>
                       <TouchableOpacity
                           style={[baseStyle.baseButtonContainer, {backgroundColor:backgroundColor, borderWidth: borderWidth}, containerStyle ]}
                           {...props}

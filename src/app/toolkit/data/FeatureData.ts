@@ -1,5 +1,8 @@
-import {FeatureDataProps} from "@/app/types/toolkit-type";
-
+export interface FeatureDataProps {
+    topic: string,
+    title: string,
+    image: number,
+}
 export const FeatureData: FeatureDataProps[] =[
     {
         topic: "Efficient Learning",

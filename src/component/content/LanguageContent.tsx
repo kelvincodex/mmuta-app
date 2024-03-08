@@ -41,6 +41,7 @@ export const LanguageContent = () => {
           <Text style={[indexStyle.language_text, {marginTop: languageData !== LanguageData[0] ? 100 : 0}]}>{languageData.title}</Text>
           <View style={{height: languageData !== LanguageData[0] ? '30%' : '70%', justifyContent: 'center', alignItems: 'center'}}>
               <FlatList data={languageData.buttons}
+                        contentContainerStyle={{gap: 10}}
                         renderItem={({item})=>{
                             return (
                                     <BaseButton
@@ -48,7 +49,7 @@ export const LanguageContent = () => {
                                         type={selected == item ? 'base' : 'border'}
                                         textStyle={[]}
                                         title={item}
-                                        containerStyle={[{backgroundColor: selected == item ? ThemeConstantUtil.COLOR.secondary["100"] : ThemeConstantUtil.COLOR.white, marginVertical: 6}]}
+                                        containerStyle={[{backgroundColor: selected == item ? ThemeConstantUtil.COLOR.secondary["100"] : ThemeConstantUtil.COLOR.white, height: 46}]}
                                     />
                             )
                         }} />

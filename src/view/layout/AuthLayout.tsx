@@ -1,4 +1,4 @@
-import {Image, ImageBackground, StyleProp, StyleSheet, Text, View, ViewProps, ViewStyle} from "react-native";
+import {Image, ImageBackground, Pressable, StyleProp, StyleSheet, Text, View, ViewProps, ViewStyle} from "react-native";
 import {indexStyle} from "@/assets/style/Index";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import BaseArrowLeft from "@/assets/icon/base-arrow-left.svg"
@@ -23,7 +23,9 @@ export const AuthLayout = ({title, children, childrenStyle}: AuthLayoutProps) =>
                   {children}
               </View>
               <ImageBackground source={require('@/assets/image/authBoCurve.png.png')} resizeMode={'cover'} style={[{height: 164}, {justifyContent:"center"}]}>
-                  <BaseArrowLeft onPress={()=> navigation.goBack()} style={{marginLeft: 50, marginTop: 50}} />
+                  <Pressable onPress={()=> navigation.goBack()} style={{marginLeft: 50, marginTop: 50, width: 35, height: 35, justifyContent: "center"}}>
+                      <BaseArrowLeft  style={{}} />
+                  </Pressable>
               </ImageBackground>
       </KeyboardAvoidingViewLayout>
   )

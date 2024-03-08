@@ -16,12 +16,12 @@ const initialState = {
 
 
 const action = {
-    initiateRegister: createAsyncThunk("auth/action/initiateRegister",  async (data: object, {rejectWithValue, ...props})=>{
-       try {
+    initiateRegister: createAsyncThunk("auth/action/initiateRegister",  async (data: any, {rejectWithValue, ...props})=>{
+        try {
            const response = await AuthService.InitiateRegister(data, {...props})
            return response.data
        }catch (e: any) {
-           return rejectWithValue(e.response.data)
+           return rejectWithValue(e.response)
        }
     }),
     confirmAccount: createAsyncThunk("auth/action/confirmAccount",  async (data: object, {rejectWithValue, ...props})=>{
@@ -92,14 +92,14 @@ const slice = createSlice({
                 state.loading = true
             })
             .addCase(action.initiateRegister.fulfilled, (state, {payload})=>{
-                if (payload.success === false){
+                if (payload.success == false){
                     state.errors = payload.errors
-                    state.loading = false
-                    // alert(validationError(payload.message, payload.errors))
                 }
+
+                state.loading = false
             })
             .addCase(action.initiateRegister.rejected, (state, action)=>{
-                console.log(action.payload)
+                console.log(action)
                 state.loading = false
 
             })

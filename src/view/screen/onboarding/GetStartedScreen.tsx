@@ -19,8 +19,9 @@ export const GetStartedScreen = () => {
   return (
       <ImageBackground style={[indexStyle.flex, indexStyle.bottom]} source={require('@/assets/image/getStarted.png')} resizeMethod={'scale'} resizeMode={'cover'}>
         <StatusBar hidden={false} style={'light'} />
-
-          <Image  style={styles.logo} source={require('@/assets/image/group-logo.png')} resizeMode={'cover'}  />
+          <View style={[{width: 184, height: 126}, styles.logo]}>
+              <Image  style={{width: '100%', height: '100%'}} source={require('@/assets/image/group-logo.png')} resizeMode={'cover'}  />
+          </View>
 
           <Animated.View entering={FadeInLeft.duration(800)} style={styles.button}>
               <BaseButton animated={false} onPress={signup} type={'base'} containerStyle={{backgroundColor: ThemeConstantUtil.COLOR.primary["100"]}}  title={'Sign Up'} />
