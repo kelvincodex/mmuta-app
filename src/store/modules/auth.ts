@@ -9,9 +9,8 @@ const initialState = {
     loading: false,
     error: false,
     errors: {},
-    message: null,
+    errorMessage: "",
     userInfo: {},
-    completePasswordReset: CompletePasswordResetRequest
 }
 
 
@@ -21,7 +20,7 @@ const action = {
            const response = await AuthService.InitiateRegister(data, {...props})
            return response.data
        }catch (e: any) {
-           return rejectWithValue(e.response)
+           return rejectWithValue(e.response.data)
        }
     }),
     confirmAccount: createAsyncThunk("auth/action/confirmAccount",  async (data: object, {rejectWithValue, ...props})=>{
@@ -78,12 +77,7 @@ const slice = createSlice({
         updateErrors: (state, action)=>{
             state.errors = action.payload
         },
-        updateMessage: (state, action)=>{
-            state.message = action.payload
-        },
-        updateCompletePasswordReset: (state, action)=>{
-            state.completePasswordReset = action.payload
-        },
+
     },
     extraReducers(builder){
         builder
@@ -94,14 +88,16 @@ const slice = createSlice({
             .addCase(action.initiateRegister.fulfilled, (state, {payload})=>{
                 if (payload.success == false){
                     state.errors = payload.errors
+                }else {
+                    state.errors = {}
+                    state.token = payload.data.token
+                    state.userInfo = payload.data
                 }
 
                 state.loading = false
             })
             .addCase(action.initiateRegister.rejected, (state, action)=>{
-                console.log(action)
                 state.loading = false
-
             })
 
             //confirm account
@@ -111,9 +107,12 @@ const slice = createSlice({
             .addCase(action.confirmAccount.fulfilled, (state, {payload})=>{
                 if ( payload.success === false){
                     state.errors = payload.errors
-                    state.loading = false
-                    // alert(validationError(payload.message, payload.errors))
+                }else {
+                    state.errors = {}
+                    state.errorMessage = payload.message
                 }
+
+                state.loading = false
             })
             .addCase(action.confirmAccount.rejected, (state, action)=>{
                 console.log(action.payload)
@@ -128,7 +127,6 @@ const slice = createSlice({
             .addCase(action.initiatePasswordReset.fulfilled, (state, {payload})=>{
                 if ( payload.success === false){
                     state.errors = payload.errors
-                    state.message = payload.message
                     state.loading = false
                     // alert(validationError(payload.message, payload.errors))
                 }
@@ -164,9 +162,12 @@ const slice = createSlice({
             .addCase(action.login.fulfilled, (state, {payload})=>{
                 if ( payload.success === false){
                     state.errors = payload.errors
-                    state.loading = false
-                    // alert(validationError(payload.message, payload.errors))
+                }else {
+                    state.errors = {}
+                    state.token = payload.token
+                    state.userInfo = payload.data
                 }
+                state.loading = false
             })
             .addCase(action.login.rejected, (state, action)=>{
                 console.log(action.payload)

@@ -9,13 +9,14 @@ import {
     ViewStyle
 } from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 interface OTPInputProps {
     containerStyle?: StyleProp<ViewStyle>,
-    label?: string
+    label?: string,
+    onChangeText?: (value: string) => void
 }
-export const OTPInput = ({label, containerStyle}: OTPInputProps) => {
+export const OTPInput = ({label, containerStyle, onChangeText}: OTPInputProps) => {
     const boxes = [...Array(5)]
     const [text, setText] = useState(([] as string[]).fill(""))
     const inputRef = useRef<TextInput | any>([...Array<any>(5)].map(()=> React.createRef()))
@@ -23,8 +24,6 @@ export const OTPInput = ({label, containerStyle}: OTPInputProps) => {
     function handleOnChangeText(value: string, index:number) {
         setText((prevState)=>{
             let texts = [...prevState]
-            console.log(value.length)
-            console.log(value.split(""))
             if (value.length > 1){
                 if (/^\d+$/.test(value) || value === ""){
                     let valueArr = value.split("")
@@ -56,6 +55,12 @@ export const OTPInput = ({label, containerStyle}: OTPInputProps) => {
             inputRef?.current[index].current.clear()
         }
     }
+
+    useEffect(() => {
+        if (onChangeText) {
+            onChangeText(text.join("").toString())
+        }
+    }, [text]);
   return(
       <View style={[styles.container, containerStyle]}>
           <Text style={styles.title}>{label}</Text>

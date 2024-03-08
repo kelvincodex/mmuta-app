@@ -5,6 +5,7 @@ export class AuthSchema {
         email: Yup.string().email().required("email Is Required."),
         password: Yup.string().required("password Is Required."),
     })
+
     static login = Yup.object().shape({
         type: Yup.boolean().required("Type Is Required."),
         email: Yup.string().email().required("email Is Required."),

@@ -7,16 +7,33 @@ import Pencil from "@/assets/icon/base-pencil.svg"
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import {OTPInput} from "@/component/input/OTPInput";
 import {BaseButton} from "@/component/button/BaseButton";
+import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "@/store";
+import {auth} from "@/store/modules/auth";
 export const ConfirmAccountFormik = () => {
     const navigation = useNavigation()
+    const [otpText, setOtpText] = useState<string>()
+    const dispatch = useDispatch<AppDispatch>()
+    const authState = useSelector<RootState>((state)=> state.auth) as any
     function navigateToSignIn() {
-        RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.signIn)
+        console.log(otpText?.length)
+        console.log(authState.userInfo)
+        if (otpText?.length === 5){
+
+            const data = {
+                code: otpText,
+                user_id: authState.userInfo.id
+            }
+            dispatch(auth.action.confirmAccount(data)).then((value)=>{
+                if (value.payload.success){
+                    RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.signIn)
+                }
+            })
+        }
     }
 
-    const formik = useFormik({
-         initialValues:{},
-         onSubmit: ()=>{},
-    })
+
   return(
       <View style={{marginTop: 30, gap: 20, alignItems:"center"}}>
         <Text style={styles.title}>We have sent a 5-digit code {"\n"} by SMS to</Text>
@@ -25,9 +42,9 @@ export const ConfirmAccountFormik = () => {
               <Text style={styles.labelPen}>08111746275</Text>
           </View>
 
-        <OTPInput containerStyle={{marginVertical: 20}} />
-
-          <BaseButton onPress={navigateToSignIn} type={'base'} title={'Confirm'} />
+        <OTPInput onChangeText={setOtpText} containerStyle={{marginVertical: 20}} />
+          <Text style={styles.errorText}>{authState?.errorMessage}</Text>
+          <BaseButton loading={authState.loading} onPress={navigateToSignIn} type={'base'} title={'Confirm'} />
 
           <Text style={styles.resendText}>Resend Code</Text>
           <Text style={styles.lightText}>Use email instead</Text>
@@ -64,5 +81,13 @@ const styles = StyleSheet.create({
         lineHeight: 19,
         fontFamily: ThemeConstantUtil.FONT_FAMILY.montserratRegular,
 
+    },
+    errorText:{
+        fontSize: 13,
+        lineHeight: 15.85,
+        fontFamily: ThemeConstantUtil.FONT_FAMILY.montserratAltRegular,
+        color: ThemeConstantUtil.COLOR.error,
+        textAlign: 'right',
+        marginTop: 5
     }
 })

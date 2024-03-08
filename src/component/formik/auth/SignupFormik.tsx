@@ -30,12 +30,9 @@ export const SignupFormik = () => {
     function handleSignUp(value: RegisterOneProp) {
         dispatch(auth.action.initiateRegister(value)).then((value)=> {
             if (value.payload.success){
-
+                RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.confirmAccount)
             }
-            console.log(value.payload.success)
-        }).catch(()=>{
         })
-        // RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.confirmAccount)
     }
 
     const formik = useFormik({
@@ -48,14 +45,14 @@ export const SignupFormik = () => {
           <IconInput
               onChangeText={formik.handleChange('email')}
               value={formik.values.email}
-              errorText={authState.errors.email ? authState.errors.email : formik.touched.email ? formik.errors.email : ""}
+              errorText={authState.errors?.email ? authState.errors?.email : formik.touched.email ? formik.errors.email : ""}
               onBlur={formik.handleBlur('email')}
               label={'Email'} Icon={BaseEnvelop} placeholder={'Enter your email address'} />
           <IconInput
               secureTextEntry={true}
               onChangeText={formik.handleChange('password')}
               value={formik.values.password}
-              errorText={authState.errors.password ? authState.errors.password : formik.touched.password ? formik.errors.password : ""}
+              errorText={authState.errors?.password ? authState.errors?.password : formik.touched.password ? formik.errors.password : ""}
               onBlur={formik.handleBlur('password')}
               label={'Password'} Icon={BasePadlock} placeholder={'Enter your password'} />
 
@@ -67,7 +64,7 @@ export const SignupFormik = () => {
                 !check &&
               <Text style={styles.errorText}>Must accept terms and conditions</Text>
           }
-          <BaseButton onPress={()=>formik.handleSubmit()} containerStyle={{width: 314, height: 62}} type={'base'} title={'Sign up'} />
+          <BaseButton loading={authState.loading} onPress={()=>formik.handleSubmit()} containerStyle={{width: 314, height: 62}} type={'base'} title={'Sign up'} />
 
           <Text style={styles.question}>Have an account already? <Text onPress={navigateToSignIn} style={styles.activeQuestion}>Sign In</Text></Text>
       </View>
