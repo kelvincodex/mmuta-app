@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b68aec27-2f5e-43a5-8f52-28de0a0cfa28" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/formik/auth/ConfirmAccountFormik.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/formik/auth/ConfirmAccountFormik.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/formik/auth/SignInFormik.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/formik/auth/SignInFormik.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/formik/auth/SignupFormik.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/formik/auth/SignupFormik.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/request/auth/ResendOtpRequest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/request/auth/ResendOtpRequest.ts" afterDir="false" />
-    </list>
+    <list default="true" id="b68aec27-2f5e-43a5-8f52-28de0a0cfa28" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,7 +90,7 @@
       <updated>1710680362041</updated>
       <workItem from="1710680372148" duration="2054000" />
       <workItem from="1710704084715" duration="623000" />
-      <workItem from="1710769968122" duration="31192000" />
+      <workItem from="1710769968122" duration="31622000" />
     </task>
     <servers />
   </component>

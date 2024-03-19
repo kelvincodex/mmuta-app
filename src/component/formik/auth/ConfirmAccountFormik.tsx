@@ -13,6 +13,7 @@ import {AppDispatch, RootState} from "@/store";
 import {auth} from "@/store/modules/auth";
 import {ConfirmAccountRequest} from "@/model/request/auth/ConfirmAccountRequest";
 import {ResendOtpRequest} from "@/model/request/auth/ResendOtpRequest";
+import {intro} from "@/store/modules/intro";
 export const ConfirmAccountFormik = () => {
     const navigation = useNavigation()
     const [otpText, setOtpText] = useState<string>()
@@ -24,6 +25,7 @@ export const ConfirmAccountFormik = () => {
             ConfirmAccountRequest.user_id = authState.userInfo.id
             dispatch(auth.action.confirmAccount(ConfirmAccountRequest)).then((value)=>{
                 if (value.payload.success){
+                    dispatch(intro.mutation.setIndex(0))
                     RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.intro)
                 }
             })
@@ -59,7 +61,7 @@ export const ConfirmAccountFormik = () => {
           <BaseButton loading={authState.loading} onPress={navigateToSignIn} type={'base'} title={'Confirm'} />
 
           <Text onPress={handleResendOtp} style={styles.resendText}>Resend Code</Text>
-          <Text onPress={navigateToSignUp} style={styles.lightText}>Use email instead</Text>
+          <Text onPress={navigateToSignUp} style={styles.lightText}>Use  {authState.userInfo.email ? 'phone' : 'email'} instead</Text>
       </View>
   )
 }
