@@ -1,4 +1,4 @@
-import {useFormik} from "formik";
+import * as Clipboard from 'expo-clipboard';
 import {StyleSheet, Text, View} from "react-native";
 import {RouteHelperUtil} from "@/util/helper/RouteHelperUtil";
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
@@ -11,43 +11,55 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "@/store";
 import {auth} from "@/store/modules/auth";
+import {ConfirmAccountRequest} from "@/model/request/auth/ConfirmAccountRequest";
+import {ResendOtpRequest} from "@/model/request/auth/ResendOtpRequest";
 export const ConfirmAccountFormik = () => {
     const navigation = useNavigation()
     const [otpText, setOtpText] = useState<string>()
     const dispatch = useDispatch<AppDispatch>()
     const authState = useSelector<RootState>((state)=> state.auth) as any
     function navigateToSignIn() {
-        console.log(otpText?.length)
-        console.log(authState.userInfo)
         if (otpText?.length === 5){
-
-            const data = {
-                code: otpText,
-                user_id: authState.userInfo.id
-            }
-            dispatch(auth.action.confirmAccount(data)).then((value)=>{
+            ConfirmAccountRequest.code = otpText
+            ConfirmAccountRequest.user_id = authState.userInfo.id
+            dispatch(auth.action.confirmAccount(ConfirmAccountRequest)).then((value)=>{
                 if (value.payload.success){
-                    RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.signIn)
+                    RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.intro)
                 }
             })
         }
     }
 
+    function navigateToSignUp() {
+        RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.signup)
+    }
 
+    function handleResendOtp() {
+        ResendOtpRequest.user_id = authState.userInfo.id
+        ResendOtpRequest.type = authState.userInfo.phone !== null ? false : true
+
+        dispatch(auth.action.resendOtp(ResendOtpRequest)).then((value)=>{
+            if (value.payload.success){
+                console.log(value.payload)
+                // RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.intro)
+            }
+        })
+
+    }
   return(
       <View style={{marginTop: 30, gap: 20, alignItems:"center"}}>
-        <Text style={styles.title}>We have sent a 5-digit code {"\n"} by SMS to</Text>
+        <Text style={styles.title}>We have sent a 5-digit code {"\n"} by {authState.userInfo.email ? "Email" : "SMS"} to</Text>
           <View style={{flexDirection: 'row', alignItems:'center'}}>
               <Pencil />
-              <Text style={styles.labelPen}>08111746275</Text>
+              <Text style={styles.labelPen}>{authState.userInfo.email ? authState.userInfo.email : authState.userInfo.phone}</Text>
           </View>
 
         <OTPInput onChangeText={setOtpText} containerStyle={{marginVertical: 20}} />
           <Text style={styles.errorText}>{authState?.errorMessage}</Text>
           <BaseButton loading={authState.loading} onPress={navigateToSignIn} type={'base'} title={'Confirm'} />
 
-          <Text style={styles.resendText}>Resend Code</Text>
-          <Text style={styles.lightText}>Use email instead</Text>
+          <Text onPress={handleResendOtp} style={styles.resendText}>Resend Code</Text>
+          <Text onPress={navigateToSignUp} style={styles.lightText}>Use email instead</Text>
       </View>
   )
 }

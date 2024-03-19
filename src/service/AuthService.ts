@@ -11,6 +11,9 @@ export class AuthService {
     static initiatePasswordReset = (data: object, others: any) =>{
         return BaseService.apiClient(others).post("/auth/password/reset/request", data)
     }
+    static resendOtp = (data: object, others: any) =>{
+        return BaseService.apiClient(others).post("/auth/password/resend/otp", data)
+    }
     static confirmPasswordReset = (data: object, others: any) =>{
         return BaseService.apiClient(others).post("/auth/password/reset/validate", data)
     }

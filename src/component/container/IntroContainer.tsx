@@ -4,16 +4,18 @@ import {IntroData, IntroDataProps} from "@/app/toolkit/data/IntroData";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store";
 import {useEffect, useState} from "react";
+import {IntroDotContainer} from "@/component/container/IntroDotContainer";
 
 interface IntroContainerProps {
 }
 export const IntroContainer = ({}: IntroContainerProps) => {
   const [introData, setIntroData] = useState<IntroDataProps>(IntroData[0])
-  const index = useSelector<RootState>((state)=> state.intro.index)
-  console.log(introData.component)
+  const introState = useSelector<RootState>((state)=> state.intro) as any
+
   useEffect(() => {
-    setIntroData(IntroData[(index as number)])
-  }, [index]);
+    setIntroData(IntroData[introState.index])
+  }, [introState.index]);
+
   return(
       <View style={{paddingHorizontal: 50}}>
         <View style={styles.counterContainer}>
@@ -30,6 +32,8 @@ export const IntroContainer = ({}: IntroContainerProps) => {
 
           {introData.component && <introData.component ></introData.component>}
         </View>
+
+        <IntroDotContainer currentIndex={introState.index} />
       </View>
   )
 }

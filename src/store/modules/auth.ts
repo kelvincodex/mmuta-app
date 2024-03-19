@@ -32,6 +32,15 @@ const action = {
        }
     }),
 
+    resendOtp: createAsyncThunk("auth/action/resendOtp",  async (data: object, {rejectWithValue, ...props})=>{
+       try {
+           const response = await AuthService.resendOtp(data, {...props})
+           return response.data
+       }catch (e: any) {
+           return rejectWithValue(e.response.data)
+       }
+    }),
+
     initiatePasswordReset: createAsyncThunk("auth/action/initiatePasswordReset",  async (data: object, {rejectWithValue, ...props})=>{
        try {
            const response = await AuthService.initiatePasswordReset(data, {...props})
@@ -107,14 +116,38 @@ const slice = createSlice({
             .addCase(action.confirmAccount.fulfilled, (state, {payload})=>{
                 if ( payload.success === false){
                     state.errors = payload.errors
+                    state.errorMessage = payload.message
+
                 }else {
                     state.errors = {}
-                    state.errorMessage = payload.message
+                    state.errorMessage = ""
                 }
 
                 state.loading = false
             })
             .addCase(action.confirmAccount.rejected, (state, action)=>{
+                console.log(action.payload)
+                state.loading = false
+
+            })
+
+            //resend otp
+            .addCase(action.resendOtp.pending, (state, action)=>{
+                state.loading = true
+            })
+            .addCase(action.resendOtp.fulfilled, (state, {payload})=>{
+                if ( payload.success === false){
+                    state.errors = payload.errors
+                    state.errorMessage = payload.message
+
+                }else {
+                    state.errors = {}
+                    state.errorMessage = ""
+                }
+
+                state.loading = false
+            })
+            .addCase(action.resendOtp.rejected, (state, action)=>{
                 console.log(action.payload)
                 state.loading = false
 

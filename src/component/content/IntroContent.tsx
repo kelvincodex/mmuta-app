@@ -9,14 +9,13 @@ import {IntroData, IntroDataProps} from "@/app/toolkit/data/IntroData";
 import {intro} from "@/store/modules/intro";
 
 export const IntroContent = () => {
-    const index = useSelector<RootState>((state)=> state.intro.index)
-    console.log(index)
+    const introState = useSelector<RootState>((state)=> state.intro) as any
     const dispatch = useDispatch<AppDispatch>()
 
   return (
       <View>
           <IntroContainer />
-          <IntroDotContainer currentIndex={(index as number)} />
+          <IntroDotContainer currentIndex={introState.index} />
       </View>
   )
 }

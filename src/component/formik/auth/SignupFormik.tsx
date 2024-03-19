@@ -1,7 +1,6 @@
 import {useFormik} from "formik";
 import {StyleSheet, Text, View} from "react-native";
 import {IconInput} from "@/component/input/IconInput";
-import BaseTelephone from "@/assets/icon/base-telephone.svg"
 import BasePadlock from "@/assets/icon/base-padlock.svg"
 import BaseEnvelop from "@/assets/icon/base-envelope.svg"
 import {BaseButton} from "@/component/button/BaseButton";
@@ -14,11 +13,14 @@ import {RegisterOneProp, RegisterOneRequest} from "@/model/request/auth/Register
 import {useDispatch, useSelector} from "react-redux";
 import {auth} from "@/store/modules/auth";
 import {AppDispatch, RootState} from "@/store";
-import {AuthSchema} from "@/app/scheme/AuthScheme";
 import {useState} from "react";
+import {SwitchPhoneToEmailInput} from "@/component/input/SwitchPhoneToEmailInput";
+import {RegisterValidation} from "@/scheme/RegisterValidation";
+import {LoginRequest} from "@/model/request/auth/LoginRequest";
 export const SignupFormik = () => {
     const [check, setCheck] = useState<boolean>(false)
-
+    const [showCheck, setShowCheck] = useState<boolean>(false)
+    const [switchTo, setSwitchTo] = useState<'phone'| 'email'>('phone')
     const navigation = useNavigation()
     const dispatch = useDispatch<AppDispatch>()
     const authState = useSelector<RootState>((state)=> state.auth) as any
@@ -27,27 +29,46 @@ export const SignupFormik = () => {
     }
 
 
-    function handleSignUp(value: RegisterOneProp) {
-        dispatch(auth.action.initiateRegister(value)).then((value)=> {
-            if (value.payload.success){
-                RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.confirmAccount)
+    function switchToTag() {
+        setSwitchTo(prevState => {
+            if (prevState == "phone"){
+                RegisterOneRequest.phone = ""
+                return "email"
+            }else {
+                RegisterOneRequest.email = ""
+
+                return "phone"
             }
         })
+    }
+    function handleSignUp(value: RegisterOneProp) {
+        setShowCheck(true)
+        if (check){
+            dispatch(auth.action.initiateRegister(value)).then((value)=> {
+                if (value.payload.success){
+                    RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.confirmAccount)
+                }
+            })
+        }
+
     }
 
     const formik = useFormik({
          initialValues: RegisterOneRequest,
          onSubmit: handleSignUp,
-         validationSchema: AuthSchema.initiateRegister
+         validationSchema: RegisterValidation
     })
   return(
       <View style={{marginTop: 30, gap: 20, alignItems:"center"}}>
-          <IconInput
-              onChangeText={formik.handleChange('email')}
-              value={formik.values.email}
-              errorText={authState.errors?.email ? authState.errors?.email : formik.touched.email ? formik.errors.email : ""}
-              onBlur={formik.handleBlur('email')}
-              label={'Email'} Icon={BaseEnvelop} placeholder={'Enter your email address'} />
+
+          {RegisterOneRequest.type = switchTo !== "phone"}
+
+          <SwitchPhoneToEmailInput
+            authState={authState}
+            switchTo={switchTo}
+            switchToAction={switchToTag}
+            formik={formik}
+        />
           <IconInput
               secureTextEntry={true}
               onChangeText={formik.handleChange('password')}
@@ -61,7 +82,7 @@ export const SignupFormik = () => {
               <Text style={styles.text}>By signing up, you agree to our  <Text style={styles.activeText}>Terms and Conditions</Text></Text>
           </View>
           {
-                !check &&
+                showCheck && !check &&
               <Text style={styles.errorText}>Must accept terms and conditions</Text>
           }
           <BaseButton loading={authState.loading} onPress={()=>formik.handleSubmit()} containerStyle={{width: 314, height: 62}} type={'base'} title={'Sign up'} />

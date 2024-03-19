@@ -7,8 +7,9 @@ export type LoginRequestProps = {
 
 
 export const LoginRequest: LoginRequestProps = {
-    type: true,
+
+    type: false,
     email: "",
     password: "",
-    phone: "07000000000",
+    phone: "",
 }

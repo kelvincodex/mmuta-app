@@ -18,17 +18,23 @@ export const IntroLiveFormik = () => {
         },
         {
             value: 'Ivory Coast'
+        },
+        {
+            value: 'Ivory Coast'
+        },
+        {
+            value: 'Ivory Coast'
         }
     ]
 
     const dispatch = useDispatch<AppDispatch>()
     function next() {
-        dispatch(intro.mutation.setIntroData(2))
+        dispatch(intro.mutation.setIndex(2))
 
     }
   return(
       <View style={{gap: 15}}>
-            <InputSearchDropdown placeholder={'Select a country'}  data={country}/>
+            <InputSearchDropdown placeholder={'Select a State'}  data={country}/>
           <BaseButton onPress={next} containerStyle={{marginTop: 120}} type={'base'} title={'Next'} />
       </View>
   )

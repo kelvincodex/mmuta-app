@@ -21,6 +21,7 @@ export const InputSearchDropdown = ({onSelect, data,...props}: InputSearchDropdo
         const filter = data.filter((value)=>{
             return value.value.toLowerCase().includes(text.toLowerCase())
         })
+        console.log(filter)
         setFilteredData(filter)
     }
 
@@ -29,6 +30,8 @@ export const InputSearchDropdown = ({onSelect, data,...props}: InputSearchDropdo
        onSelect && onSelect(text)
         setFilteredData([])
     }
+
+    console.log(filteredData)
   return(
       <View>
           <View style={styles.inputContainer}>
@@ -41,7 +44,7 @@ export const InputSearchDropdown = ({onSelect, data,...props}: InputSearchDropdo
                       {
                           filteredData?.map((value, index)=>{
                               return (
-                                  <TouchableOpacity style={styles.dropdownItem} onPress={()=> handleSelect(value.value)}>
+                                  <TouchableOpacity key={index} style={styles.dropdownItem} onPress={()=> handleSelect(value.value)}>
                                       <Text style={styles.dropdownItemText}>{value.label ?? value.value}</Text>
                                   </TouchableOpacity>
                               )

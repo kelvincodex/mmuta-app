@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import React, {useEffect, useRef, useState} from "react";
+import * as Clipboard from 'expo-clipboard';
 
 interface OTPInputProps {
     containerStyle?: StyleProp<ViewStyle>,
@@ -18,28 +19,19 @@ interface OTPInputProps {
 }
 export const OTPInput = ({label, containerStyle, onChangeText}: OTPInputProps) => {
     const boxes = [...Array(5)]
-    const [text, setText] = useState(([] as string[]).fill(""))
+    const [text, setText] = useState<string[]>(([] as string[]).fill(""))
     const inputRef = useRef<TextInput | any>([...Array<any>(5)].map(()=> React.createRef()))
 
-    function handleOnChangeText(value: string, index:number) {
-        setText((prevState)=>{
-            let texts = [...prevState]
-            if (value.length > 1){
-                if (/^\d+$/.test(value) || value === ""){
-                    let valueArr = value.split("")
-                    // texts.push(valueArr)
-                    // texts[index] = valueArr
-
-                    for (let i=0; i<= boxes.length - 1; i++){
-                            texts[index] = valueArr[i]
-                    }
-
-                }
-            }else {
-                texts[index] = value
-            }
-            return texts
-        })
+        // /^\d+$/.test(value)
+     async function  handleOnChangeText(value: string, index:number) {
+         setText((prevState)=>{
+             let texts = [...prevState]
+             console.log(texts)
+             if (/^\d+$/.test(value) || value == ""){
+                 texts[index] = value
+             }
+             return texts
+         })
     }
 
     function handleOnKeyPress(e: NativeSyntheticEvent<TextInputKeyPressEventData>, index: number) {
@@ -54,6 +46,20 @@ export const OTPInput = ({label, containerStyle, onChangeText}: OTPInputProps) =
             inputRef?.current[index - 1].current.focus()
             inputRef?.current[index].current.clear()
         }
+    }
+
+    function insertValue(value: string, index: number) {
+        if (/^\d+$/.test(value) && value.length > 1){
+            setText(prevState => {
+                let texts = [...prevState]
+                for (let i = 0; i < 5; i++){
+                    texts[index] = value[i]
+                    index++
+                }
+                return texts
+            })
+        }
+        return text[index]
     }
 
     useEffect(() => {
@@ -73,8 +79,10 @@ export const OTPInput = ({label, containerStyle, onChangeText}: OTPInputProps) =
                               maxLength={index === (boxes.length - 1)? 1 :5}
                               key={index} style={styles.input}
                               onKeyPress={(e)=> handleOnKeyPress(e, index)}
-                              value={text[index]}
-                              keyboardType={"numeric"}
+                              value={insertValue(text[index], index)}
+                              keyboardType={"number-pad"}
+                              autoComplete={'sms-otp'}
+                              textContentType={'oneTimeCode'}
                               onChangeText={(value)=> handleOnChangeText(value, index)}
                           />
                       )

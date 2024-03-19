@@ -7,13 +7,12 @@ interface IntroDotContainerProps {
     currentIndex: number
 }
 export const IntroDotContainer = ({currentIndex}: IntroDotContainerProps) => {
-    console.log(currentIndex)
   return(
       <View style={styles.container}>
           {
               IntroData.map((_, index)=>{
                   return (
-                      <Dot key={index} containerStyle={[{width:9, height: 9}, {backgroundColor: index+ 1 == currentIndex ? ThemeConstantUtil.COLOR.secondary["100"] : ThemeConstantUtil.COLOR.neutral["25"]}]} />
+                      <Dot key={index} containerStyle={[{width:9, height: 9}, {backgroundColor: index == currentIndex ? ThemeConstantUtil.COLOR.secondary["100"] : ThemeConstantUtil.COLOR.neutral["25"]}]} />
                   )
               })
           }

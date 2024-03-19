@@ -1,17 +1,18 @@
 import {View} from "react-native";
 import {PlainInput} from "@/component/input/PlainInput";
 import {BaseButton} from "@/component/button/BaseButton";
-import {useDispatch} from "react-redux";
-import {AppDispatch} from "@/store";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "@/store";
 import {intro} from "@/store/modules/intro";
-import {IntroData} from "@/app/toolkit/data/IntroData";
 
 
 export const IntroNameFormik = () => {
     const dispatch = useDispatch<AppDispatch>()
+    const introState = useSelector<RootState>((state)=> state.intro) as any
 
     function next() {
-        dispatch(intro.mutation.setIntroData(1))
+        console.log('working')
+        dispatch(intro.mutation.setIndex(1))
     }
   return(
       <View style={{gap: 15}}>

@@ -1,5 +1,5 @@
 import {useFormik} from "formik";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, TextInput, View} from "react-native";
 import {IconInput} from "@/component/input/IconInput";
 import BaseTelephone from "@/assets/icon/base-telephone.svg"
 import BasePadlock from "@/assets/icon/base-padlock.svg"
@@ -10,15 +10,18 @@ import {ThemeConstantUtil} from "@/util/constant/ThemeConstantUtil";
 import {RouteHelperUtil} from "@/util/helper/RouteHelperUtil";
 import {RouterConstantUtil} from "@/util/constant/RouterConstantUtil";
 import {useNavigation} from "@react-navigation/native";
-import {AuthSchema} from "@/app/scheme/AuthScheme";
 import {LoginRequest, LoginRequestProps} from "@/model/request/auth/LoginRequest";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "@/store";
 import {auth} from "@/store/modules/auth";
+import {SwitchPhoneToEmailInput} from "@/component/input/SwitchPhoneToEmailInput";
+import {ChangeEvent, useState} from "react";
+import {LoginValidation} from "@/scheme/LoginValidation";
 export const SignInFormik = () => {
     const navigation = useNavigation()
     const authState = useSelector<RootState>((state)=> state.auth) as any
     const dispatch = useDispatch<AppDispatch>()
+    const [switchTo, setSwitchTo] = useState<'phone'| 'email'>('phone')
 
     function navigateToSignUp() {
         RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.signup)
@@ -32,6 +35,15 @@ export const SignInFormik = () => {
         })
     }
 
+    function switchToTag() {
+        setSwitchTo(prevState => {
+            if (prevState == "phone"){
+                return "email"
+            }else {
+                return "phone"
+            }
+        })
+    }
     function navigateToIntro() {
         RouteHelperUtil.navigate(navigation, RouterConstantUtil.auth.intro)
     }
@@ -42,18 +54,18 @@ export const SignInFormik = () => {
     const formik = useFormik({
          initialValues: LoginRequest,
          onSubmit: handleLoginSubmit,
-         validationSchema: AuthSchema.login
+         validationSchema: LoginValidation
     })
   return(
       <View style={{marginTop: 30, gap: 20, alignItems:"center"}}>
-          <IconInput
-              label={'Email'}
-              onChangeText={formik.handleChange('email')}
-              value={formik.values.email}
-              errorText={authState.errors?.email ? authState.errors?.email : formik.touched.email ? formik.errors.email : ""}
-              onBlur={formik.handleBlur('email')}
-              Icon={BaseEnvelop} placeholder={'Enter your email address'} />
+          {LoginRequest.type = switchTo !== "phone"}
 
+          <SwitchPhoneToEmailInput
+              authState={authState}
+              switchTo={switchTo}
+              switchToAction={switchToTag}
+              formik={formik}
+          />
 
           <IconInput
               secureTextEntry={true}

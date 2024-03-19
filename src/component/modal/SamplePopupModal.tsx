@@ -7,9 +7,10 @@ import {ReactNode} from "react";
 interface PopupModalProps {
     children: ReactNode,
     oncloseFunction?: ()=> void,
-    containerStyle?: StyleProp<ViewStyle>
+    containerStyle?: StyleProp<ViewStyle>,
+    cancelIconShow: boolean
 }
-export const SamplePopupModal = ({containerStyle, oncloseFunction, children,...props}: PopupModalProps & ModalProps) => {
+export const SamplePopupModal = ({containerStyle, oncloseFunction, cancelIconShow, children,...props}: PopupModalProps & ModalProps) => {
 
     return(
         <Modal
@@ -24,7 +25,12 @@ export const SamplePopupModal = ({containerStyle, oncloseFunction, children,...p
             <View  style={{flex: 1, justifyContent: 'center', alignItems:'center', backgroundColor: 'hsla(0, 0%, 0%, .3)' }}>
                 <Animated.View entering={BounceIn.duration(500).delay(2000)}
                                style={[{width: 370, height: 532, borderRadius: 10, overflow: 'hidden', backgroundColor: ThemeConstantUtil.COLOR.white, transform:[{translateY: 100}]}, containerStyle]}>
-                    <BaseCancel onPress={oncloseFunction && oncloseFunction} style={{position: 'absolute', zIndex: 999, right: 20, top: 20}} />
+
+                    {
+                        cancelIconShow && (
+                            <BaseCancel onPress={oncloseFunction && oncloseFunction} style={{position: 'absolute', zIndex: 999, right: 20, top: 20}} />
+                        )
+                    }
                     {children}
                 </Animated.View>
             </View>
@@ -33,6 +39,9 @@ export const SamplePopupModal = ({containerStyle, oncloseFunction, children,...p
     )
 }
 
+SamplePopupModal.defaultProps = {
+    cancelIconShow: true
+}
 const styles = StyleSheet.create({
     title:{
         color: ThemeConstantUtil.COLOR.neutral["100"],

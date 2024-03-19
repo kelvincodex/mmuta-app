@@ -13,7 +13,7 @@ export const IntroLayout = ({children}: IntroLayoutProps) => {
   return (
       <KeyboardAvoidingViewLayout containerStyle={{flex: 1, backgroundColor: ThemeConstantUtil.COLOR.white, }}>
           <ImageBackground source={require('@/assets/image/introTopCurve.png')} resizeMode={'cover'} style={{height: 399, width: '100%', alignItems:'center', paddingTop: 40}} >
-              <Image source={require('@/assets/image/logo.png')} resizeMode={'cover'} style={{marginVertical: 20}} />
+              <Image source={require('@/assets/image/logo.png')} resizeMode={'cover'} style={{marginVertical: 20, width: 45, height: 47}} />
               <Text style={styles.headerTitle}>Welcome to Mmuta</Text>
               <View style={styles.line} />
               <Text style={styles.headerSubtitle}>Let’s get you started!</Text>

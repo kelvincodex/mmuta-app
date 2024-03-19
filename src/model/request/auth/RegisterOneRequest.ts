@@ -10,10 +10,10 @@ export type RegisterOneProp = {
 }
 
 export const RegisterOneRequest: RegisterOneProp = {
-    type: true,
+    type: false,
     email: "",
     password: "",
-    phone: "07042199640",
+    phone: "",
     language: 1,
     disability: 1,
     disabled: 1,

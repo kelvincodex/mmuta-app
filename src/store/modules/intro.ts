@@ -13,6 +13,9 @@ const slice = createSlice({
         setIntroData: (state, action)=>{
             state.index = action.payload
         },
+        setIndex: (state, action)=>{
+            state.index = action.payload
+        }
     },
 
 })

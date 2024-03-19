@@ -3,7 +3,7 @@ export type CompleteAccountRequestProps = {
     user_id: number,
 }
 
-export const CompleteAccountRequest: CompleteAccountRequestProps = {
+export const ConfirmAccountRequest: CompleteAccountRequestProps = {
     code: "",
     user_id: 0,
 }
