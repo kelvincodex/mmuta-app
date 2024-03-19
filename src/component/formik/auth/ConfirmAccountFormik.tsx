@@ -36,7 +36,7 @@ export const ConfirmAccountFormik = () => {
 
     function handleResendOtp() {
         ResendOtpRequest.user_id = authState.userInfo.id
-        ResendOtpRequest.type = authState.userInfo.phone !== null ? false : true
+        ResendOtpRequest.type = authState.userInfo.phone !== null ? 0 : 1
 
         dispatch(auth.action.resendOtp(ResendOtpRequest)).then((value)=>{
             if (value.payload.success){

@@ -32,10 +32,8 @@ export const SignupFormik = () => {
     function switchToTag() {
         setSwitchTo(prevState => {
             if (prevState == "phone"){
-                RegisterOneRequest.phone = ""
                 return "email"
             }else {
-                RegisterOneRequest.email = ""
 
                 return "phone"
             }

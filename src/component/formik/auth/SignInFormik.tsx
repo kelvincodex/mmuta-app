@@ -15,7 +15,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "@/store";
 import {auth} from "@/store/modules/auth";
 import {SwitchPhoneToEmailInput} from "@/component/input/SwitchPhoneToEmailInput";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import {LoginValidation} from "@/scheme/LoginValidation";
 export const SignInFormik = () => {
     const navigation = useNavigation()
@@ -56,10 +56,12 @@ export const SignInFormik = () => {
          onSubmit: handleLoginSubmit,
          validationSchema: LoginValidation
     })
+
+    // console.log(switchTo !== "phone")
+
+
   return(
       <View style={{marginTop: 30, gap: 20, alignItems:"center"}}>
-          {LoginRequest.type = switchTo !== "phone"}
-
           <SwitchPhoneToEmailInput
               authState={authState}
               switchTo={switchTo}
@@ -73,6 +75,8 @@ export const SignInFormik = () => {
               value={formik.values.password}
               errorText={authState.errors?.password ? authState.errors?.password : formik.touched.password ? formik.errors.password : ""}
               label={'Password'} Icon={BasePadlock} placeholder={'Enter your password'} />
+
+          { LoginRequest.type = switchTo !== "phone" }
 
          <Text onPress={navigateToForgetPassword} style={styles.activeText}>Forgot password?</Text>
 
